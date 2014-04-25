@@ -1,6 +1,7 @@
 var config = {};
 
 var sites = {
+  'ancestry': require('./sites/ancestry.js'),
   'familysearch': require('./sites/familysearch.js')
 };
 
