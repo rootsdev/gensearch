@@ -1,5 +1,4 @@
-var utils = require(require('path').join(__dirname, '..', 'utils.js')),
-    _ = require('underscore')._;
+var utils = require(__dirname + '/../utils.js');
     
 var defaultConfig = {
   FS_YEAR_PLUS_MINUS: 2
@@ -7,7 +6,7 @@ var defaultConfig = {
 
 module.exports = function(config, data){
 
-  config = _.defaults(config, defaultConfig);
+  config = utils.defaults(config, defaultConfig);
 
   var fsURL = 'https://familysearch.org/search/record/results#count=20&query=';
   var query = '';
@@ -27,7 +26,7 @@ module.exports = function(config, data){
     ['spouse_surname', 'spouseFamilyName'],
     ['marriage_place', 'marriagePlace']
   ];
-  _.each(simpleMappings, function(map) {
+  utils.each(simpleMappings, function(map) {
     if( data[map[1]] ) {
       query = addQueryParam(query, map[0], data[map[1]]);
     }

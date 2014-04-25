@@ -4,7 +4,8 @@
   "description": "Generate search links for genealogy websites",
   "main": "src/search.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha"
+    "test": "./node_modules/mocha/bin/mocha",
+    "build": "./node_modules/browserify/bin/cmd.js -e src/search.js src/sites/familysearch.js src/utils.js -o search.js"
   },
   "keywords": [
     "genealogy"
@@ -13,6 +14,7 @@
   "license": "MIT",
   "dependencies": {
     "underscore": "~1.6.0",
-    "mocha": "~1.18.2"
+    "mocha": "~1.18.2",
+    "browserify": "3.44.2"
   }
 }

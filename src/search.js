@@ -1,16 +1,8 @@
-var path = require('path');
+var config = {};
 
-var siteList = [
-  'familysearch'
-];
-
-var config = {},
-    sites = {};
-
-for(var i = 0; i < siteList.length; i++){
-  var siteName = siteList[i];
-  sites[siteName] = require(path.join(__dirname, 'sites', siteName + '.js'));
-}
+var sites = {
+  'familysearch': require(__dirname + '/sites/familysearch.js')
+};
 
 var search = module.exports = function(site, person){
   return sites[site](config, person);
