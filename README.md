@@ -17,6 +17,8 @@ var fsLink = search('familysearch', {
 * birthDate
 * deathPlace
 * deathDate
+* marriagePlace
+* marriageDate
 * fatherGivenName
 * fatherFamilyName
 * motherGivenName

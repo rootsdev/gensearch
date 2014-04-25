@@ -12,14 +12,10 @@ for(var i = 0; i < siteList.length; i++){
   sites[siteName] = require(path.join(__dirname, 'sites', siteName + '.js'));
 }
 
-module.exports = {
-  
-  config: function(newConfig){
-    config = newConfig;
-  },
-  
-  url: function(site, person){
-    return sites[site](config, person);
-  }
-  
+var search = module.exports = function(site, person){
+  return sites[site](config, person);
+};
+
+search.config = function(newConfig){
+  config = newConfig;
 };

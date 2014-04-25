@@ -35,7 +35,7 @@ module.exports = function(config, data){
   
   // Process the birth year 
   if(data.birthDate){
-    var birthYear = utils.getYear(data.birthDate);
+    var birthYear = utils.getYearInt(data.birthDate);
     if( birthYear ) {
       query = addQueryParam(query, 'birth_year', (birthYear - config.FS_YEAR_PLUS_MINUS)+'-'+(birthYear + config.FS_YEAR_PLUS_MINUS));
     }
@@ -43,7 +43,7 @@ module.exports = function(config, data){
   
   // Process the death year
   if(data.deathDate){
-    var deathYear = utils.getYear(data.deathDate);
+    var deathYear = utils.getYearInt(data.deathDate);
     if( deathYear ) {
       query = addQueryParam(query, 'death_year', (deathYear - config.FS_YEAR_PLUS_MINUS)+'-'+(deathYear + config.FS_YEAR_PLUS_MINUS));
     }
@@ -51,7 +51,7 @@ module.exports = function(config, data){
 
   // Process the marriage year
   if(data.marriageDate){
-    var marriageYear = utils.getYear(data.marriageDate);
+    var marriageYear = utils.getYearInt(data.marriageDate);
     if( marriageYear ) {
       query = addQueryParam(query, 'marriage_year', (marriageYear - config.FS_YEAR_PLUS_MINUS)+'-'+(marriageYear + config.FS_YEAR_PLUS_MINUS));
     }
