@@ -4,8 +4,8 @@
   "description": "Generate search links for genealogy websites",
   "main": "src/search.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha",
-    "build": "./node_modules/browserify/bin/cmd.js -e src/search.js src/sites/familysearch.js src/utils.js -o search.js"
+    "test": "npm run build && ./node_modules/mocha/bin/mocha",
+    "build": "./node_modules/browserify/bin/cmd.js src/search.js -s gensearch -o gensearch.js"
   },
   "keywords": [
     "genealogy"

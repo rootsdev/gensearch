@@ -1,7 +1,7 @@
 var config = {};
 
 var sites = {
-  'familysearch': require(__dirname + '/sites/familysearch.js')
+  'familysearch': require('./sites/familysearch.js')
 };
 
 var search = module.exports = function(site, person){

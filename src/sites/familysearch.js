@@ -1,4 +1,4 @@
-var utils = require(__dirname + '/../utils.js');
+var utils = require('../utils.js');
     
 var defaultConfig = {
   FS_YEAR_PLUS_MINUS: 2

@@ -1,5 +1,5 @@
 var assert = require('assert'),
-    search = require(require('path').join(__dirname, '..', 'src', 'search.js'));
+    search = require(require('path').join(__dirname, '..', 'gensearch.js'));
 
 describe('familysearch', function(){
   
