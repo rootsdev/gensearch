@@ -13,7 +13,6 @@
   "author": "Justin York",
   "license": "MIT",
   "dependencies": {
-    "underscore": "~1.6.0",
     "mocha": "~1.18.2",
     "browserify": "3.44.2"
   }
