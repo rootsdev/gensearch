@@ -7,7 +7,8 @@ var sites = {
   'billiongraves': _dereq_('./sites/billiongraves.js'),
   'familysearch': _dereq_('./sites/familysearch.js'),
   'findagrave': _dereq_('./sites/findagrave.js'),
-  'geni': _dereq_('./sites/geni.js')
+  'geni': _dereq_('./sites/geni.js'),
+  'werelate': _dereq_('./sites/werelate.js')
 };
 
 var search = module.exports = function(site, person){
@@ -18,7 +19,7 @@ search.config = function(newConfig){
   config = newConfig;
 };
 
-},{"./sites/ancestry.js":2,"./sites/archives.js":3,"./sites/billiongraves.js":4,"./sites/familysearch.js":5,"./sites/findagrave.js":6,"./sites/geni.js":7}],2:[function(_dereq_,module,exports){
+},{"./sites/ancestry.js":2,"./sites/archives.js":3,"./sites/billiongraves.js":4,"./sites/familysearch.js":5,"./sites/findagrave.js":6,"./sites/geni.js":7,"./sites/werelate.js":8}],2:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -57,7 +58,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":8}],3:[function(_dereq_,module,exports){
+},{"../utils.js":9}],3:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -91,7 +92,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":8}],4:[function(_dereq_,module,exports){
+},{"../utils.js":9}],4:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -124,7 +125,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":8}],5:[function(_dereq_,module,exports){
+},{"../utils.js":9}],5:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
     
 var defaultConfig = {
@@ -205,7 +206,7 @@ function addQueryParam(query, queryParam, paramValue) {
   }
   return query;
 };
-},{"../utils.js":8}],6:[function(_dereq_,module,exports){
+},{"../utils.js":9}],6:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -234,7 +235,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":8}],7:[function(_dereq_,module,exports){
+},{"../utils.js":9}],7:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -260,7 +261,56 @@ module.exports = function(config, data){
   
 };
 
-},{"../utils.js":8}],8:[function(_dereq_,module,exports){
+},{"../utils.js":9}],8:[function(_dereq_,module,exports){
+var utils = _dereq_('../utils.js');
+
+var defaultConfig = {
+  WERELATE_BIRTH_RANGE: 2,
+  WERELATE_DEATH_RANGE: 2
+};
+
+module.exports = function(config, data){
+
+  config = utils.defaults(config, defaultConfig);
+
+  var baseUrl = 'http://www.werelate.org/wiki/Special:Search?sort=score&ns=Person&rows=20&ecp=p';
+  var query = '';
+  
+  // Simple mappings from the person data object to params
+  // These don't need any further processing
+  var mappings = [
+    ['g', 'givenName'],
+    ['s', 'familyName'],
+    ['bp', 'birthPlace'],
+    ['dp', 'deathPlace'],
+    ['fg', 'fatherGivenName'],
+    ['fs', 'fatherFamilyName'],
+    ['mg', 'motherGivenName'],
+    ['ms', 'motherFamilyName'],
+    ['sg', 'spouseGivenName'],
+    ['ss', 'spouseFamilyName']
+  ];    
+  utils.each(mappings, function(map) {
+    if(data[map[1]]) {
+      query = utils.addQueryParam(query, map[0], data[map[1]]);
+    }
+  });
+  
+  // Process dates and add the ranges
+  if(data.birthDate) {
+    query = utils.addQueryParam(query, 'bd', utils.getYear(data.birthDate));
+    query = utils.addQueryParam(query, 'br', config.WERELATE_BIRTH_RANGE);
+  }
+  if(data.deathDate) {
+    query = utils.addQueryParam(query, 'dd', utils.getYear(data.deathDate));
+    query = utils.addQueryParam(query, 'dr', config.WERELATE_DEATH_RANGE);
+  }
+  
+  return baseUrl + query;
+
+};
+
+},{"../utils.js":9}],9:[function(_dereq_,module,exports){
 var utils = {};
 
 /**
