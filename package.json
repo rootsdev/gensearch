@@ -1,6 +1,6 @@
 {
   "name": "gen-search",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Generate search links for genealogy websites",
   "main": "src/search.js",
   "scripts": {
