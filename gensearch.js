@@ -7,6 +7,7 @@ var sites = {
   'billiongraves': _dereq_('./sites/billiongraves.js'),
   'familysearch': _dereq_('./sites/familysearch.js'),
   'findagrave': _dereq_('./sites/findagrave.js'),
+  'findmypast': _dereq_('./sites/findmypast.js'),
   'fold3': _dereq_('./sites/fold3.js'),
   'genealogybank': _dereq_('./sites/genealogybank.js'),
   'geni': _dereq_('./sites/geni.js'),
@@ -23,7 +24,7 @@ search.config = function(newConfig){
   config = newConfig;
 };
 
-},{"./sites/ancestry.js":2,"./sites/archives.js":3,"./sites/billiongraves.js":4,"./sites/familysearch.js":5,"./sites/findagrave.js":6,"./sites/fold3.js":7,"./sites/genealogybank.js":8,"./sites/geni.js":9,"./sites/newspapers.js":10,"./sites/werelate.js":11,"./sites/worldvitalrecords.js":12}],2:[function(_dereq_,module,exports){
+},{"./sites/ancestry.js":2,"./sites/archives.js":3,"./sites/billiongraves.js":4,"./sites/familysearch.js":5,"./sites/findagrave.js":6,"./sites/findmypast.js":7,"./sites/fold3.js":8,"./sites/genealogybank.js":9,"./sites/geni.js":10,"./sites/newspapers.js":11,"./sites/werelate.js":12,"./sites/worldvitalrecords.js":13}],2:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -62,7 +63,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":13}],3:[function(_dereq_,module,exports){
+},{"../utils.js":14}],3:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -96,7 +97,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":13}],4:[function(_dereq_,module,exports){
+},{"../utils.js":14}],4:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -129,7 +130,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":13}],5:[function(_dereq_,module,exports){
+},{"../utils.js":14}],5:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
     
 var defaultConfig = {
@@ -210,7 +211,7 @@ function addQueryParam(query, queryParam, paramValue) {
   }
   return query;
 };
-},{"../utils.js":13}],6:[function(_dereq_,module,exports){
+},{"../utils.js":14}],6:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -239,7 +240,45 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":13}],7:[function(_dereq_,module,exports){
+},{"../utils.js":14}],7:[function(_dereq_,module,exports){
+var utils = _dereq_('../utils.js');
+
+var defaultConfig = {
+  FINDMYPAST_BIRTH_OFFSET: 2,
+  FINDMYPAST_DEATH_OFFSET: 2
+};
+
+module.exports = function(config, data){
+
+  config = utils.defaults(config, defaultConfig);
+
+  var baseUrl = 'http://search.findmypast.co.uk/search/world-records?firstname_variants=true';
+  var query = '';
+  
+  // Name
+  if(data.givenName) {
+    query = utils.addQueryParam(query, 'firstname', data.givenName);
+  }
+  if(data.familyName) {
+    query = utils.addQueryParam(query, 'lastname', data.familyName);
+  }
+  
+  // TODO: birth and death; need ability to specify which one
+  
+  // Birth
+  // keywordsplace=birthplace
+  // yearofbirth=birthyear
+  // yearofbirthoffset=config.FINDMYPAST_BIRTH_OFFSET
+  
+  // Death
+  // keywordsplace=deathplace
+  // yearofdeath=deathyear
+  // yearofdeathoffset=config.FINDMYPAST_DEATH_OFFSET
+  
+  return baseUrl + query;
+  
+};
+},{"../utils.js":14}],8:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -265,7 +304,7 @@ module.exports = function(config, data){
   
 };
 
-},{"../utils.js":13}],8:[function(_dereq_,module,exports){
+},{"../utils.js":14}],9:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -328,7 +367,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":13}],9:[function(_dereq_,module,exports){
+},{"../utils.js":14}],10:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -354,7 +393,7 @@ module.exports = function(config, data){
   
 };
 
-},{"../utils.js":13}],10:[function(_dereq_,module,exports){
+},{"../utils.js":14}],11:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -424,7 +463,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":13}],11:[function(_dereq_,module,exports){
+},{"../utils.js":14}],12:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -473,7 +512,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":13}],12:[function(_dereq_,module,exports){
+},{"../utils.js":14}],13:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -513,7 +552,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":13}],13:[function(_dereq_,module,exports){
+},{"../utils.js":14}],14:[function(_dereq_,module,exports){
 var utils = {};
 
 /**

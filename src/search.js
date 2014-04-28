@@ -6,6 +6,7 @@ var sites = {
   'billiongraves': require('./sites/billiongraves.js'),
   'familysearch': require('./sites/familysearch.js'),
   'findagrave': require('./sites/findagrave.js'),
+  'findmypast': require('./sites/findmypast.js'),
   'fold3': require('./sites/fold3.js'),
   'genealogybank': require('./sites/genealogybank.js'),
   'geni': require('./sites/geni.js'),
