@@ -8,7 +8,8 @@ var sites = {
   'findagrave': require('./sites/findagrave.js'),
   'fold3': require('./sites/fold3.js'),
   'geni': require('./sites/geni.js'),
-  'werelate': require('./sites/werelate.js')
+  'werelate': require('./sites/werelate.js'),
+  'worldvitalrecords': require('./sites/worldvitalrecords.js')
 };
 
 var search = module.exports = function(site, person){

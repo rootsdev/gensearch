@@ -9,7 +9,8 @@ var sites = {
   'findagrave': _dereq_('./sites/findagrave.js'),
   'fold3': _dereq_('./sites/fold3.js'),
   'geni': _dereq_('./sites/geni.js'),
-  'werelate': _dereq_('./sites/werelate.js')
+  'werelate': _dereq_('./sites/werelate.js'),
+  'worldvitalrecords': _dereq_('./sites/worldvitalrecords.js')
 };
 
 var search = module.exports = function(site, person){
@@ -20,7 +21,7 @@ search.config = function(newConfig){
   config = newConfig;
 };
 
-},{"./sites/ancestry.js":2,"./sites/archives.js":3,"./sites/billiongraves.js":4,"./sites/familysearch.js":5,"./sites/findagrave.js":6,"./sites/fold3.js":7,"./sites/geni.js":8,"./sites/werelate.js":9}],2:[function(_dereq_,module,exports){
+},{"./sites/ancestry.js":2,"./sites/archives.js":3,"./sites/billiongraves.js":4,"./sites/familysearch.js":5,"./sites/findagrave.js":6,"./sites/fold3.js":7,"./sites/geni.js":8,"./sites/werelate.js":9,"./sites/worldvitalrecords.js":10}],2:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -59,7 +60,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":10}],3:[function(_dereq_,module,exports){
+},{"../utils.js":11}],3:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -93,7 +94,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":10}],4:[function(_dereq_,module,exports){
+},{"../utils.js":11}],4:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -126,7 +127,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":10}],5:[function(_dereq_,module,exports){
+},{"../utils.js":11}],5:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
     
 var defaultConfig = {
@@ -207,7 +208,7 @@ function addQueryParam(query, queryParam, paramValue) {
   }
   return query;
 };
-},{"../utils.js":10}],6:[function(_dereq_,module,exports){
+},{"../utils.js":11}],6:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -236,7 +237,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":10}],7:[function(_dereq_,module,exports){
+},{"../utils.js":11}],7:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -262,7 +263,7 @@ module.exports = function(config, data){
   
 };
 
-},{"../utils.js":10}],8:[function(_dereq_,module,exports){
+},{"../utils.js":11}],8:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -288,7 +289,7 @@ module.exports = function(config, data){
   
 };
 
-},{"../utils.js":10}],9:[function(_dereq_,module,exports){
+},{"../utils.js":11}],9:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -337,7 +338,47 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":10}],10:[function(_dereq_,module,exports){
+},{"../utils.js":11}],10:[function(_dereq_,module,exports){
+var utils = _dereq_('../utils.js');
+
+var defaultConfig = {
+  WVR_DATE_RANGE: 2
+};
+
+module.exports = function(config, data){
+
+  config = utils.defaults(config, defaultConfig);
+
+  var baseUrl = 'http://www.worldvitalrecords.com/GlobalSearch.aspx?qt=g';
+  var query = '';
+  
+  // Name
+  query = utils.addQueryParam(query, 'zfn', data.givenName);
+  query = utils.addQueryParam(query, 'zln', data.familyName);
+  
+  // Place
+  if(data.birthPlace){
+    query = utils.addQueryParam(query, 'zplace', data.birthPlace);
+  } else if(data.deathPlace){
+    query = utils.addQueryParam(query, 'zplace', data.deathPlace);
+  }
+  
+  // Date
+  if(data.birthDate) {
+    query = utils.addQueryParam(query, 'zdate', utils.getYear(data.birthDate));
+    query = utils.addQueryParam(query, 'zdater', config.WVR_DATE_RANGE);
+  } else if(data.deathDate) {
+    query = utils.addQueryParam(query, 'zdate', utils.getYear(data.deathDate));
+    query = utils.addQueryParam(query, 'zdater', config.WVR_DATE_RANGE);
+  }
+  
+  // TODO record type?
+  
+  return baseUrl + query;
+
+};
+
+},{"../utils.js":11}],11:[function(_dereq_,module,exports){
 var utils = {};
 
 /**
