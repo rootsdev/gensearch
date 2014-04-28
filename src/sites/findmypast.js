@@ -9,6 +9,8 @@ module.exports = function(config, data){
 
   config = utils.defaults(config, defaultConfig);
 
+  // TODO: allow for .com or other fmp sites
+  
   var baseUrl = 'http://search.findmypast.co.uk/search/world-records?firstname_variants=true';
   var query = '';
   

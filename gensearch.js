@@ -1,5 +1,6 @@
 !function(e){if("object"==typeof exports)module.exports=e();else if("function"==typeof define&&define.amd)define(e);else{var f;"undefined"!=typeof window?f=window:"undefined"!=typeof global?f=global:"undefined"!=typeof self&&(f=self),f.gensearch=e()}}(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(_dereq_,module,exports){
-var config = {};
+var utils = _dereq_('./utils.js'),
+    config = {};
 
 var sites = {
   'ancestry': _dereq_('./sites/ancestry.js'),
@@ -16,15 +17,17 @@ var sites = {
   'worldvitalrecords': _dereq_('./sites/worldvitalrecords.js')
 };
 
-var search = module.exports = function(site, person){
-  return sites[site] ? sites[site](config, person) : undefined;
+var search = module.exports = function(site, person, opts){
+  if(sites[site]){
+    return sites[site](utils.extend({}, config, opts), person);
+  }
 };
 
 search.config = function(newConfig){
   config = newConfig;
 };
 
-},{"./sites/ancestry.js":2,"./sites/archives.js":3,"./sites/billiongraves.js":4,"./sites/familysearch.js":5,"./sites/findagrave.js":6,"./sites/findmypast.js":7,"./sites/fold3.js":8,"./sites/genealogybank.js":9,"./sites/geni.js":10,"./sites/newspapers.js":11,"./sites/werelate.js":12,"./sites/worldvitalrecords.js":13}],2:[function(_dereq_,module,exports){
+},{"./sites/ancestry.js":2,"./sites/archives.js":3,"./sites/billiongraves.js":4,"./sites/familysearch.js":5,"./sites/findagrave.js":6,"./sites/findmypast.js":7,"./sites/fold3.js":8,"./sites/genealogybank.js":9,"./sites/geni.js":10,"./sites/newspapers.js":11,"./sites/werelate.js":12,"./sites/worldvitalrecords.js":13,"./utils.js":14}],2:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -252,6 +255,8 @@ module.exports = function(config, data){
 
   config = utils.defaults(config, defaultConfig);
 
+  // TODO: allow for .com or other fmp sites
+  
   var baseUrl = 'http://search.findmypast.co.uk/search/world-records?firstname_variants=true';
   var query = '';
   
@@ -622,6 +627,17 @@ utils.defaults = function(obj) {
     if (source) {
       for (var prop in source) {
         if (obj[prop] === void 0) obj[prop] = source[prop];
+      }
+    }
+  });
+  return obj;
+};
+
+utils.extend = function(obj) {
+  utils.each(Array.prototype.slice.call(arguments, 1), function(source) {
+    if (source) {
+      for (var prop in source) {
+        obj[prop] = source[prop];
       }
     }
   });

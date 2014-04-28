@@ -1,4 +1,5 @@
-var config = {};
+var utils = require('./utils.js'),
+    config = {};
 
 var sites = {
   'ancestry': require('./sites/ancestry.js'),
@@ -15,8 +16,10 @@ var sites = {
   'worldvitalrecords': require('./sites/worldvitalrecords.js')
 };
 
-var search = module.exports = function(site, person){
-  return sites[site] ? sites[site](config, person) : undefined;
+var search = module.exports = function(site, person, opts){
+  if(sites[site]){
+    return sites[site](utils.extend({}, config, opts), person);
+  }
 };
 
 search.config = function(newConfig){

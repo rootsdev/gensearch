@@ -11,4 +11,8 @@ describe('utils', function(){
     assert.equal(utils.getYearInt('2 February 1835'), 1835);
   });
   
+  it('extend', function(){
+    assert.deepEqual(utils.extend({}, {one:1},{two:2},{one:3}), {one:3,two:2});
+  });
+  
 });

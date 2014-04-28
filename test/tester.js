@@ -3,8 +3,8 @@ var assert = require('assert'),
     data = require('./test-data.js');
 
 module.exports = function(site){
-  var tester = function(data, url){
-    assert.equal(search(site, data), url);
+  var tester = function(data, url, opts){
+    assert.equal(search(site, data, opts), url);
   };
   tester.data = data;
   return tester;
