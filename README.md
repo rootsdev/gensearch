@@ -9,6 +9,8 @@ var fsLink = gensearch('familysearch', {
 });
 ````
 
+### __[Try the Demo](http://genealogysystems.github.io/gen-search/)__
+
 ## Sites
 
 | Site Name | Site Key |
