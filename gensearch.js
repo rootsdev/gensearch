@@ -10,6 +10,7 @@ var sites = {
   'fold3': _dereq_('./sites/fold3.js'),
   'genealogybank': _dereq_('./sites/genealogybank.js'),
   'geni': _dereq_('./sites/geni.js'),
+  'newspapers': _dereq_('./sites/newspapers.js'),
   'werelate': _dereq_('./sites/werelate.js'),
   'worldvitalrecords': _dereq_('./sites/worldvitalrecords.js')
 };
@@ -22,7 +23,7 @@ search.config = function(newConfig){
   config = newConfig;
 };
 
-},{"./sites/ancestry.js":2,"./sites/archives.js":3,"./sites/billiongraves.js":4,"./sites/familysearch.js":5,"./sites/findagrave.js":6,"./sites/fold3.js":7,"./sites/genealogybank.js":8,"./sites/geni.js":9,"./sites/werelate.js":10,"./sites/worldvitalrecords.js":11}],2:[function(_dereq_,module,exports){
+},{"./sites/ancestry.js":2,"./sites/archives.js":3,"./sites/billiongraves.js":4,"./sites/familysearch.js":5,"./sites/findagrave.js":6,"./sites/fold3.js":7,"./sites/genealogybank.js":8,"./sites/geni.js":9,"./sites/newspapers.js":10,"./sites/werelate.js":11,"./sites/worldvitalrecords.js":12}],2:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -61,7 +62,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":12}],3:[function(_dereq_,module,exports){
+},{"../utils.js":13}],3:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -95,7 +96,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":12}],4:[function(_dereq_,module,exports){
+},{"../utils.js":13}],4:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -128,7 +129,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":12}],5:[function(_dereq_,module,exports){
+},{"../utils.js":13}],5:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
     
 var defaultConfig = {
@@ -209,7 +210,7 @@ function addQueryParam(query, queryParam, paramValue) {
   }
   return query;
 };
-},{"../utils.js":12}],6:[function(_dereq_,module,exports){
+},{"../utils.js":13}],6:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -238,7 +239,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":12}],7:[function(_dereq_,module,exports){
+},{"../utils.js":13}],7:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -264,7 +265,7 @@ module.exports = function(config, data){
   
 };
 
-},{"../utils.js":12}],8:[function(_dereq_,module,exports){
+},{"../utils.js":13}],8:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -327,7 +328,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":12}],9:[function(_dereq_,module,exports){
+},{"../utils.js":13}],9:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -353,7 +354,77 @@ module.exports = function(config, data){
   
 };
 
-},{"../utils.js":12}],10:[function(_dereq_,module,exports){
+},{"../utils.js":13}],10:[function(_dereq_,module,exports){
+var utils = _dereq_('../utils.js');
+
+var defaultConfig = {
+  NEWSPAPERS_LIFESPAN: 90,
+  NEWSPAPERS_DATE_PADDING: 5
+};
+
+module.exports = function(config, data){
+
+  config = utils.defaults(config, defaultConfig);
+
+  var baseUrl = 'http://go.newspapers.com/results.php?query=';
+  var query = '';
+  
+  // Name
+  if(data.givenName) {
+    query += data.givenName;
+  }
+  if(data.familyName) {
+    if(query) {
+      query += ' ';
+    }
+    query += data.familyName;
+  }
+  
+  //
+  // Year range
+  //
+  
+  var birthYear = utils.getYearInt(data.birthDate), 
+      deathYear = utils.getYearInt(data.deathDate);
+  
+  // We have a birth date
+  if(birthYear) {
+    
+    // We also have death date so add padding
+    if(deathYear){
+      deathYear += config.NEWSPAPERS_DATE_PADDING;
+    } 
+    
+    // We have a birth date but not a death date, so add
+    // the lifespan value to the birth year
+    else {
+      deathYear = birthYear + config.NEWSPAPERS_LIFESPAN;
+    }
+    
+    // Pad the birth year
+    birthYear -= config.NEWSPAPERS_DATE_PADDING
+  } 
+  
+  // We have a death year but not a birth year
+  else if(deathYear) {
+    
+    // Subtract lifespan value from deathYear
+    birthYear = deathYear - config.NEWSPAPERS_LIFESPAN;
+    
+    // Pad the death year
+    deathYear += config.NEWSPAPERS_DATE_PADDING;
+  }
+  
+  if(birthYear && deathYear){
+    query = utils.addQueryParam(query, 'year-start', birthYear);
+    query = utils.addQueryParam(query, 'year-end', deathYear);
+  }
+  
+  return baseUrl + query;
+
+};
+
+},{"../utils.js":13}],11:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -402,7 +473,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":12}],11:[function(_dereq_,module,exports){
+},{"../utils.js":13}],12:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -442,7 +513,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":12}],12:[function(_dereq_,module,exports){
+},{"../utils.js":13}],13:[function(_dereq_,module,exports){
 var utils = {};
 
 /**

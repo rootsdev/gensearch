@@ -9,6 +9,7 @@ var sites = {
   'fold3': require('./sites/fold3.js'),
   'genealogybank': require('./sites/genealogybank.js'),
   'geni': require('./sites/geni.js'),
+  'newspapers': require('./sites/newspapers.js'),
   'werelate': require('./sites/werelate.js'),
   'worldvitalrecords': require('./sites/worldvitalrecords.js')
 };
