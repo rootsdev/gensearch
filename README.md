@@ -3,7 +3,7 @@
 Generate genealogy search links for a ton of websites.
 
 ````
-var fsLink = search('familysearch', {
+var fsLink = gensearch('familysearch', {
   givenName: "Joe William",
   familyName: "Clark"
 });
