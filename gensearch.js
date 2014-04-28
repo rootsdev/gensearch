@@ -3,18 +3,19 @@ var config = {};
 
 var sites = {
   'ancestry': _dereq_('./sites/ancestry.js'),
-  'familysearch': _dereq_('./sites/familysearch.js')
+  'familysearch': _dereq_('./sites/familysearch.js'),
+  'archives': _dereq_('./sites/archives.js')
 };
 
 var search = module.exports = function(site, person){
-  return sites[site](config, person);
+  return sites[site] ? sites[site](config, person) : undefined;
 };
 
 search.config = function(newConfig){
   config = newConfig;
 };
 
-},{"./sites/ancestry.js":2,"./sites/familysearch.js":3}],2:[function(_dereq_,module,exports){
+},{"./sites/ancestry.js":2,"./sites/archives.js":3,"./sites/familysearch.js":4}],2:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -60,7 +61,45 @@ function addQueryParam(query, queryParam, paramValue) {
   return query;
 };
 
-},{"../utils.js":4}],3:[function(_dereq_,module,exports){
+},{"../utils.js":5}],3:[function(_dereq_,module,exports){
+var utils = _dereq_('../utils.js');
+
+var defaultConfig = {
+  ARCHIVES_BIRTH_SPAN: 2,
+  ARCHIVES_DEATH_SPAN: 2
+};
+
+module.exports = function(config, data){
+
+  config = utils.defaults(config, defaultConfig);
+
+  var url = 'http://www.archives.com/GA.aspx';    
+  var query = '?_act=registerAS_org&Location=US';
+
+  if(data.givenName) {
+    query = addQueryParam(query, 'FirstName', data.givenName);
+  }
+  if(data.familyName) {
+    query = addQueryParam(query, 'LastName', data.familyName);
+  }
+  if(data.birthDate) {
+    query = addQueryParam(query, 'BirthYear', utils.getYear(data.birthDate));
+    query = addQueryParam(query, 'BirthYearSpan', config.ARCHIVES_BIRTH_SPAN);
+  }
+  if(data.deathDate) {
+    query = addQueryParam(query, 'DeathYear', utils.getYear(data.deathDate));
+    query = addQueryParam(query, 'DeathYearSpan', config.ARCHIVES_DEATH_SPAN);
+  }
+
+  return url + query;
+
+};
+
+function addQueryParam(query, name, value) {
+  return query += '&' + name + '=' + encodeURIComponent( value );
+};
+
+},{"../utils.js":5}],4:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
     
 var defaultConfig = {
@@ -141,7 +180,7 @@ function addQueryParam(query, queryParam, paramValue) {
   }
   return query;
 };
-},{"../utils.js":4}],4:[function(_dereq_,module,exports){
+},{"../utils.js":5}],5:[function(_dereq_,module,exports){
 var utils = {};
 
 /**
