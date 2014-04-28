@@ -3,8 +3,9 @@ var config = {};
 
 var sites = {
   'ancestry': _dereq_('./sites/ancestry.js'),
-  'familysearch': _dereq_('./sites/familysearch.js'),
-  'archives': _dereq_('./sites/archives.js')
+  'archives': _dereq_('./sites/archives.js'),
+  'billiongraves': _dereq_('./sites/billiongraves.js'),
+  'familysearch': _dereq_('./sites/familysearch.js')
 };
 
 var search = module.exports = function(site, person){
@@ -15,7 +16,7 @@ search.config = function(newConfig){
   config = newConfig;
 };
 
-},{"./sites/ancestry.js":2,"./sites/archives.js":3,"./sites/familysearch.js":4}],2:[function(_dereq_,module,exports){
+},{"./sites/ancestry.js":2,"./sites/archives.js":3,"./sites/billiongraves.js":4,"./sites/familysearch.js":5}],2:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -61,7 +62,7 @@ function addQueryParam(query, queryParam, paramValue) {
   return query;
 };
 
-},{"../utils.js":5}],3:[function(_dereq_,module,exports){
+},{"../utils.js":6}],3:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -99,7 +100,44 @@ function addQueryParam(query, name, value) {
   return query += '&' + name + '=' + encodeURIComponent( value );
 };
 
-},{"../utils.js":5}],4:[function(_dereq_,module,exports){
+},{"../utils.js":6}],4:[function(_dereq_,module,exports){
+var utils = _dereq_('../utils.js');
+
+var defaultConfig = {
+  BILLIONGRAVES_YEAR_RANGE: 2
+};
+
+module.exports = function(config, data){
+
+  config = utils.defaults(config, defaultConfig);
+
+  var url = 'http://billiongraves.com/pages/search/index.php#year_range=' + config.BILLIONGRAVES_YEAR_RANGE + '&lim=0&action=search&exact=false&country=0&state=0&county=0';
+  var query = '';
+  
+  if(data.givenName) {
+    query = addQueryParam(query, 'given_names', data.givenName);
+  }
+  if(data.familyName) {
+    query = addQueryParam(query, 'family_names', data.familyName);
+  }
+  
+  if(data.birthDate) {
+    query = addQueryParam(query, 'birth_year', utils.getYear(data.birthDate));
+  }
+  
+  if(data.deathDate) {
+    query = addQueryParam(query, 'death_year', utils.getYear(data.deathDate));
+  }
+  
+  return url + query;
+
+};
+
+function addQueryParam(query, name, value) {
+  return query += '&' + name + '=' + encodeURIComponent(value);
+};
+
+},{"../utils.js":6}],5:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
     
 var defaultConfig = {
@@ -180,7 +218,7 @@ function addQueryParam(query, queryParam, paramValue) {
   }
   return query;
 };
-},{"../utils.js":5}],5:[function(_dereq_,module,exports){
+},{"../utils.js":6}],6:[function(_dereq_,module,exports){
 var utils = {};
 
 /**

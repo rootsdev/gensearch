@@ -2,8 +2,9 @@ var config = {};
 
 var sites = {
   'ancestry': require('./sites/ancestry.js'),
-  'familysearch': require('./sites/familysearch.js'),
-  'archives': require('./sites/archives.js')
+  'archives': require('./sites/archives.js'),
+  'billiongraves': require('./sites/billiongraves.js'),
+  'familysearch': require('./sites/familysearch.js')
 };
 
 var search = module.exports = function(site, person){
