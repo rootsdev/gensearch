@@ -7,6 +7,7 @@ var sites = {
   'familysearch': require('./sites/familysearch.js'),
   'findagrave': require('./sites/findagrave.js'),
   'fold3': require('./sites/fold3.js'),
+  'genealogybank': require('./sites/genealogybank.js'),
   'geni': require('./sites/geni.js'),
   'werelate': require('./sites/werelate.js'),
   'worldvitalrecords': require('./sites/worldvitalrecords.js')

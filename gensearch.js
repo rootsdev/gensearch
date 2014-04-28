@@ -8,6 +8,7 @@ var sites = {
   'familysearch': _dereq_('./sites/familysearch.js'),
   'findagrave': _dereq_('./sites/findagrave.js'),
   'fold3': _dereq_('./sites/fold3.js'),
+  'genealogybank': _dereq_('./sites/genealogybank.js'),
   'geni': _dereq_('./sites/geni.js'),
   'werelate': _dereq_('./sites/werelate.js'),
   'worldvitalrecords': _dereq_('./sites/worldvitalrecords.js')
@@ -21,7 +22,7 @@ search.config = function(newConfig){
   config = newConfig;
 };
 
-},{"./sites/ancestry.js":2,"./sites/archives.js":3,"./sites/billiongraves.js":4,"./sites/familysearch.js":5,"./sites/findagrave.js":6,"./sites/fold3.js":7,"./sites/geni.js":8,"./sites/werelate.js":9,"./sites/worldvitalrecords.js":10}],2:[function(_dereq_,module,exports){
+},{"./sites/ancestry.js":2,"./sites/archives.js":3,"./sites/billiongraves.js":4,"./sites/familysearch.js":5,"./sites/findagrave.js":6,"./sites/fold3.js":7,"./sites/genealogybank.js":8,"./sites/geni.js":9,"./sites/werelate.js":10,"./sites/worldvitalrecords.js":11}],2:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -60,7 +61,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":11}],3:[function(_dereq_,module,exports){
+},{"../utils.js":12}],3:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -94,7 +95,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":11}],4:[function(_dereq_,module,exports){
+},{"../utils.js":12}],4:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -127,7 +128,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":11}],5:[function(_dereq_,module,exports){
+},{"../utils.js":12}],5:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
     
 var defaultConfig = {
@@ -208,7 +209,7 @@ function addQueryParam(query, queryParam, paramValue) {
   }
   return query;
 };
-},{"../utils.js":11}],6:[function(_dereq_,module,exports){
+},{"../utils.js":12}],6:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -237,7 +238,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":11}],7:[function(_dereq_,module,exports){
+},{"../utils.js":12}],7:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -263,7 +264,70 @@ module.exports = function(config, data){
   
 };
 
-},{"../utils.js":11}],8:[function(_dereq_,module,exports){
+},{"../utils.js":12}],8:[function(_dereq_,module,exports){
+var utils = _dereq_('../utils.js');
+
+var defaultConfig = {
+  GENEALOGYBANK_LIFESPAN: 90,
+  GENEALOGYBANK_DATE_PADDING: 5
+};
+
+module.exports = function(config, data){
+
+  config = utils.defaults(config, defaultConfig);
+
+  var baseUrl = 'http://www.genealogybank.com/gbnk/?dateType=range';
+  var query = '';
+  
+  // Name
+  query = utils.addQueryParam(query, 'fname', data.givenName);
+  query = utils.addQueryParam(query, 'lname', data.familyName);
+  
+  //
+  // Year range
+  //
+  
+  var birthYear = utils.getYearInt(data.birthDate), 
+      deathYear = utils.getYearInt(data.deathDate);
+  
+  // We have a birth date
+  if(birthYear) {
+    
+    // We also have death date so add padding
+    if(deathYear){
+      deathYear += config.GENEALOGYBANK_DATE_PADDING;
+    } 
+    
+    // We have a birth date but not a death date, so add
+    // the lifespan value to the birth year
+    else {
+      deathYear = birthYear + config.GENEALOGYBANK_LIFESPAN;
+    }
+    
+    // Pad the birth year
+    birthYear -= config.GENEALOGYBANK_DATE_PADDING
+  } 
+  
+  // We have a death year but not a birth year
+  else if(deathYear) {
+    
+    // Subtract lifespan value from deathYear
+    birthYear = deathYear - config.GENEALOGYBANK_LIFESPAN;
+    
+    // Pad the death year
+    deathYear += config.GENEALOGYBANK_DATE_PADDING;
+  }
+  
+  if(birthYear && deathYear){
+    query = utils.addQueryParam(query, 'rgfromDate', birthYear);
+    query = utils.addQueryParam(query, 'rgtoDate', deathYear);
+  }
+  
+  return baseUrl + query;
+
+};
+
+},{"../utils.js":12}],9:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -289,7 +353,7 @@ module.exports = function(config, data){
   
 };
 
-},{"../utils.js":11}],9:[function(_dereq_,module,exports){
+},{"../utils.js":12}],10:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -338,7 +402,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":11}],10:[function(_dereq_,module,exports){
+},{"../utils.js":12}],11:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -378,7 +442,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":11}],11:[function(_dereq_,module,exports){
+},{"../utils.js":12}],12:[function(_dereq_,module,exports){
 var utils = {};
 
 /**
