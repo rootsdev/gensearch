@@ -7,6 +7,7 @@ var sites = {
   'billiongraves': _dereq_('./sites/billiongraves.js'),
   'familysearch': _dereq_('./sites/familysearch.js'),
   'findagrave': _dereq_('./sites/findagrave.js'),
+  'fold3': _dereq_('./sites/fold3.js'),
   'geni': _dereq_('./sites/geni.js'),
   'werelate': _dereq_('./sites/werelate.js')
 };
@@ -19,7 +20,7 @@ search.config = function(newConfig){
   config = newConfig;
 };
 
-},{"./sites/ancestry.js":2,"./sites/archives.js":3,"./sites/billiongraves.js":4,"./sites/familysearch.js":5,"./sites/findagrave.js":6,"./sites/geni.js":7,"./sites/werelate.js":8}],2:[function(_dereq_,module,exports){
+},{"./sites/ancestry.js":2,"./sites/archives.js":3,"./sites/billiongraves.js":4,"./sites/familysearch.js":5,"./sites/findagrave.js":6,"./sites/fold3.js":7,"./sites/geni.js":8,"./sites/werelate.js":9}],2:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -58,7 +59,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":9}],3:[function(_dereq_,module,exports){
+},{"../utils.js":10}],3:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -92,7 +93,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":9}],4:[function(_dereq_,module,exports){
+},{"../utils.js":10}],4:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -125,7 +126,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":9}],5:[function(_dereq_,module,exports){
+},{"../utils.js":10}],5:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
     
 var defaultConfig = {
@@ -206,7 +207,7 @@ function addQueryParam(query, queryParam, paramValue) {
   }
   return query;
 };
-},{"../utils.js":9}],6:[function(_dereq_,module,exports){
+},{"../utils.js":10}],6:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -235,7 +236,33 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":9}],7:[function(_dereq_,module,exports){
+},{"../utils.js":10}],7:[function(_dereq_,module,exports){
+var utils = _dereq_('../utils.js');
+
+module.exports = function(config, data){
+
+  var url = 'http://go.fold3.com/query.php?query=';
+  var query = '';
+  
+  if(data.givenName) {
+    query += data.givenName;
+  }
+  
+  if(data.familyName) {
+    if(query) {
+      query += ' ';
+    }
+    query += data.familyName;
+  }
+  
+  // Replace spaces with +
+  query = query.replace(/ /g, '+');
+  
+  return url + query;
+  
+};
+
+},{"../utils.js":10}],8:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -261,7 +288,7 @@ module.exports = function(config, data){
   
 };
 
-},{"../utils.js":9}],8:[function(_dereq_,module,exports){
+},{"../utils.js":10}],9:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -310,7 +337,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":9}],9:[function(_dereq_,module,exports){
+},{"../utils.js":10}],10:[function(_dereq_,module,exports){
 var utils = {};
 
 /**
