@@ -62,7 +62,13 @@ module.exports = function(config, data){
   query = utils.addQueryParam(query, 'msddy', utils.getYear(data.deathDate));
   query = utils.addQueryParam(query, 'msgdy', utils.getYear(data.marriageDate));
   
-  return ancestryURL + query + '&gl=allgs';
+  if(config.db){
+    query = utils.addQueryParam(query, 'db', config.db);
+  } else {
+    query = utils.addQueryParam(query, 'gl', 'allgs');
+  }
+  
+  return ancestryURL + query;
 
 };
 
@@ -192,7 +198,13 @@ module.exports = function(config, data){
     }
   }
   
-  return fsURL + encodeURIComponent(query);
+  query = encodeURIComponent(query);
+  
+  if(config.collectionId){
+    query = utils.addQueryParam(query, 'collection_id', config.collectionId);
+  }
+  
+  return fsURL + query;
 
 };
 

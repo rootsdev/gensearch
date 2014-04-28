@@ -56,7 +56,13 @@ module.exports = function(config, data){
     }
   }
   
-  return fsURL + encodeURIComponent(query);
+  query = encodeURIComponent(query);
+  
+  if(config.collectionId){
+    query = utils.addQueryParam(query, 'collection_id', config.collectionId);
+  }
+  
+  return fsURL + query;
 
 };
 
