@@ -13,24 +13,20 @@ module.exports = function(config, data){
   var query = '?_act=registerAS_org&Location=US';
 
   if(data.givenName) {
-    query = addQueryParam(query, 'FirstName', data.givenName);
+    query = utils.addQueryParam(query, 'FirstName', data.givenName);
   }
   if(data.familyName) {
-    query = addQueryParam(query, 'LastName', data.familyName);
+    query = utils.addQueryParam(query, 'LastName', data.familyName);
   }
   if(data.birthDate) {
-    query = addQueryParam(query, 'BirthYear', utils.getYear(data.birthDate));
-    query = addQueryParam(query, 'BirthYearSpan', config.ARCHIVES_BIRTH_SPAN);
+    query = utils.addQueryParam(query, 'BirthYear', utils.getYear(data.birthDate));
+    query = utils.addQueryParam(query, 'BirthYearSpan', config.ARCHIVES_BIRTH_SPAN);
   }
   if(data.deathDate) {
-    query = addQueryParam(query, 'DeathYear', utils.getYear(data.deathDate));
-    query = addQueryParam(query, 'DeathYearSpan', config.ARCHIVES_DEATH_SPAN);
+    query = utils.addQueryParam(query, 'DeathYear', utils.getYear(data.deathDate));
+    query = utils.addQueryParam(query, 'DeathYearSpan', config.ARCHIVES_DEATH_SPAN);
   }
 
   return url + query;
 
-};
-
-function addQueryParam(query, name, value) {
-  return query += '&' + name + '=' + encodeURIComponent( value );
 };

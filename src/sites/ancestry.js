@@ -23,22 +23,15 @@ module.exports = function(config, data){
   
   utils.each(mappings, function(map) {
     if( data[map[1]] ) {
-      query = addQueryParam(query, map[0], data[map[1]]);
+      query = utils.addQueryParam(query, map[0], data[map[1]]);
     }
   });
   
   // Process dates
-  query = addQueryParam(query, 'msbdy', utils.getYear(data.birthDate));
-  query = addQueryParam(query, 'msddy', utils.getYear(data.deathDate));
-  query = addQueryParam(query, 'msgdy', utils.getYear(data.marriageDate));
+  query = utils.addQueryParam(query, 'msbdy', utils.getYear(data.birthDate));
+  query = utils.addQueryParam(query, 'msddy', utils.getYear(data.deathDate));
+  query = utils.addQueryParam(query, 'msgdy', utils.getYear(data.marriageDate));
   
   return ancestryURL + query + '&gl=allgs';
 
-};
-
-function addQueryParam(query, queryParam, paramValue) {
-  if(paramValue) {
-    query += '&' + queryParam + '=' + encodeURIComponent(paramValue)
-  }	
-  return query;
 };

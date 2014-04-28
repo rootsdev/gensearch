@@ -5,7 +5,8 @@ var sites = {
   'ancestry': _dereq_('./sites/ancestry.js'),
   'archives': _dereq_('./sites/archives.js'),
   'billiongraves': _dereq_('./sites/billiongraves.js'),
-  'familysearch': _dereq_('./sites/familysearch.js')
+  'familysearch': _dereq_('./sites/familysearch.js'),
+  'findagrave': _dereq_('./sites/findagrave.js')
 };
 
 var search = module.exports = function(site, person){
@@ -16,7 +17,7 @@ search.config = function(newConfig){
   config = newConfig;
 };
 
-},{"./sites/ancestry.js":2,"./sites/archives.js":3,"./sites/billiongraves.js":4,"./sites/familysearch.js":5}],2:[function(_dereq_,module,exports){
+},{"./sites/ancestry.js":2,"./sites/archives.js":3,"./sites/billiongraves.js":4,"./sites/familysearch.js":5,"./sites/findagrave.js":6}],2:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -42,27 +43,20 @@ module.exports = function(config, data){
   
   utils.each(mappings, function(map) {
     if( data[map[1]] ) {
-      query = addQueryParam(query, map[0], data[map[1]]);
+      query = utils.addQueryParam(query, map[0], data[map[1]]);
     }
   });
   
   // Process dates
-  query = addQueryParam(query, 'msbdy', utils.getYear(data.birthDate));
-  query = addQueryParam(query, 'msddy', utils.getYear(data.deathDate));
-  query = addQueryParam(query, 'msgdy', utils.getYear(data.marriageDate));
+  query = utils.addQueryParam(query, 'msbdy', utils.getYear(data.birthDate));
+  query = utils.addQueryParam(query, 'msddy', utils.getYear(data.deathDate));
+  query = utils.addQueryParam(query, 'msgdy', utils.getYear(data.marriageDate));
   
   return ancestryURL + query + '&gl=allgs';
 
 };
 
-function addQueryParam(query, queryParam, paramValue) {
-  if(paramValue) {
-    query += '&' + queryParam + '=' + encodeURIComponent(paramValue)
-  }	
-  return query;
-};
-
-},{"../utils.js":6}],3:[function(_dereq_,module,exports){
+},{"../utils.js":7}],3:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -78,29 +72,25 @@ module.exports = function(config, data){
   var query = '?_act=registerAS_org&Location=US';
 
   if(data.givenName) {
-    query = addQueryParam(query, 'FirstName', data.givenName);
+    query = utils.addQueryParam(query, 'FirstName', data.givenName);
   }
   if(data.familyName) {
-    query = addQueryParam(query, 'LastName', data.familyName);
+    query = utils.addQueryParam(query, 'LastName', data.familyName);
   }
   if(data.birthDate) {
-    query = addQueryParam(query, 'BirthYear', utils.getYear(data.birthDate));
-    query = addQueryParam(query, 'BirthYearSpan', config.ARCHIVES_BIRTH_SPAN);
+    query = utils.addQueryParam(query, 'BirthYear', utils.getYear(data.birthDate));
+    query = utils.addQueryParam(query, 'BirthYearSpan', config.ARCHIVES_BIRTH_SPAN);
   }
   if(data.deathDate) {
-    query = addQueryParam(query, 'DeathYear', utils.getYear(data.deathDate));
-    query = addQueryParam(query, 'DeathYearSpan', config.ARCHIVES_DEATH_SPAN);
+    query = utils.addQueryParam(query, 'DeathYear', utils.getYear(data.deathDate));
+    query = utils.addQueryParam(query, 'DeathYearSpan', config.ARCHIVES_DEATH_SPAN);
   }
 
   return url + query;
 
 };
 
-function addQueryParam(query, name, value) {
-  return query += '&' + name + '=' + encodeURIComponent( value );
-};
-
-},{"../utils.js":6}],4:[function(_dereq_,module,exports){
+},{"../utils.js":7}],4:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -115,29 +105,25 @@ module.exports = function(config, data){
   var query = '';
   
   if(data.givenName) {
-    query = addQueryParam(query, 'given_names', data.givenName);
+    query = utils.addQueryParam(query, 'given_names', data.givenName);
   }
   if(data.familyName) {
-    query = addQueryParam(query, 'family_names', data.familyName);
+    query = utils.addQueryParam(query, 'family_names', data.familyName);
   }
   
   if(data.birthDate) {
-    query = addQueryParam(query, 'birth_year', utils.getYear(data.birthDate));
+    query = utils.addQueryParam(query, 'birth_year', utils.getYear(data.birthDate));
   }
   
   if(data.deathDate) {
-    query = addQueryParam(query, 'death_year', utils.getYear(data.deathDate));
+    query = utils.addQueryParam(query, 'death_year', utils.getYear(data.deathDate));
   }
   
   return url + query;
 
 };
 
-function addQueryParam(query, name, value) {
-  return query += '&' + name + '=' + encodeURIComponent(value);
-};
-
-},{"../utils.js":6}],5:[function(_dereq_,module,exports){
+},{"../utils.js":7}],5:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
     
 var defaultConfig = {
@@ -218,7 +204,36 @@ function addQueryParam(query, queryParam, paramValue) {
   }
   return query;
 };
-},{"../utils.js":6}],6:[function(_dereq_,module,exports){
+},{"../utils.js":7}],6:[function(_dereq_,module,exports){
+var utils = _dereq_('../utils.js');
+
+module.exports = function(config, data){
+
+  var url = 'http://www.findagrave.com/cgi-bin/fg.cgi?page=gsr&GScntry=0&GSst=0&GSgrid=&df=all&GSob=n';
+  var query = '';
+  
+  if( data.givenName ) {
+    query = utils.addQueryParam(query, 'GSfn', data.givenName);
+  }
+  if( data.familyName ) {
+    query = utils.addQueryParam(query, 'GSln', data.familyName);
+  }
+  
+  if( data.birthDate ) {
+    query = utils.addQueryParam(query, 'GSbyrel', 'in');
+    query = utils.addQueryParam(query, 'GSby', (new Date(data.birthDate)).getFullYear());
+  }
+  
+  if( data.deathDate ) {
+    query = utils.addQueryParam(query, 'GSdyrel', 'in');
+    query = utils.addQueryParam(query, 'GSdy', (new Date(data.deathDate)).getFullYear());
+  }
+  
+  return url + query;
+
+};
+
+},{"../utils.js":7}],7:[function(_dereq_,module,exports){
 var utils = {};
 
 /**
@@ -240,7 +255,18 @@ utils.getYearInt = function(date){
 };
 
 /**
- * Functions lifted from underscore
+ * Add a query param to a url
+ */
+utils.addQueryParam = function(query, name, value){
+  if(value){
+    query += '&' + name + '=' + encodeURIComponent(value);
+  }
+  return query;
+};
+
+/**
+ * Functions lifted from underscore.js
+ * http://underscorejs.org/
  */
  
 utils.isObject = function(obj) {

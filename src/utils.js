@@ -19,7 +19,18 @@ utils.getYearInt = function(date){
 };
 
 /**
- * Functions lifted from underscore
+ * Add a query param to a url
+ */
+utils.addQueryParam = function(query, name, value){
+  if(value){
+    query += '&' + name + '=' + encodeURIComponent(value);
+  }
+  return query;
+};
+
+/**
+ * Functions lifted from underscore.js
+ * http://underscorejs.org/
  */
  
 utils.isObject = function(obj) {

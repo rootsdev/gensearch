@@ -12,24 +12,20 @@ module.exports = function(config, data){
   var query = '';
   
   if(data.givenName) {
-    query = addQueryParam(query, 'given_names', data.givenName);
+    query = utils.addQueryParam(query, 'given_names', data.givenName);
   }
   if(data.familyName) {
-    query = addQueryParam(query, 'family_names', data.familyName);
+    query = utils.addQueryParam(query, 'family_names', data.familyName);
   }
   
   if(data.birthDate) {
-    query = addQueryParam(query, 'birth_year', utils.getYear(data.birthDate));
+    query = utils.addQueryParam(query, 'birth_year', utils.getYear(data.birthDate));
   }
   
   if(data.deathDate) {
-    query = addQueryParam(query, 'death_year', utils.getYear(data.deathDate));
+    query = utils.addQueryParam(query, 'death_year', utils.getYear(data.deathDate));
   }
   
   return url + query;
 
-};
-
-function addQueryParam(query, name, value) {
-  return query += '&' + name + '=' + encodeURIComponent(value);
 };
