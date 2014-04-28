@@ -11,6 +11,26 @@ var fsLink = gensearch('familysearch', {
 
 ### __[Try the Demo](http://genealogysystems.github.io/gen-search/)__
 
+## Install
+
+#### Web
+
+Download the `gensearch.js` file and include on your page.
+
+````
+<script src="gensearch.js"></script>
+````
+
+#### Node
+
+````
+npm install gen-search
+````
+
+````
+var genSearch = require('gen-search');
+````
+
 ## Sites
 
 | Site Name | Site Key |
@@ -30,17 +50,17 @@ var fsLink = gensearch('familysearch', {
 
 ## Schema
 
-* givenName
-* familyName
-* birthPlace
-* birthDate
-* deathPlace
-* deathDate
-* marriagePlace
-* marriageDate
-* fatherGivenName
-* fatherFamilyName
-* motherGivenName
-* motherFamilyName
-* spouseGivenName
-* spouseFamilyName
+* `givenName`
+* `familyName`
+* `birthPlace`
+* `birthDate`
+* `deathPlace`
+* `deathDate`
+* `marriagePlace`
+* `marriageDate`
+* `fatherGivenName`
+* `fatherFamilyName`
+* `motherGivenName`
+* `motherFamilyName`
+* `spouseGivenName`
+* `spouseFamilyName`
