@@ -9,6 +9,23 @@ var fsLink = search('familysearch', {
 });
 ````
 
+## Sites
+
+| Site Name | Site Key |
+| ------------- | ------------- |
+| [Ancestry.com](http://ancestry.com) | `ancestry` |
+| [Archives](http://archives.com) | `archives` |
+| [Billion Graves](http://billiongraves.com/) | `billiongraves` |
+| [FamilySearch.org](http://familysearch.org)  | `familysearch`  |
+| [Find-A-Grave](http://findagrave.com) | `findagrave` |
+| [findmypast](http://findmypast.co.uk) | `findmypast` |
+| [Fold3](http://fold3.com) | `fold3` |
+| [Genealogy Bank](http://genealogybank.com) | `genealogybank` |
+| [Geni](http://geni.com) | `geni` |
+| [Newspapers.com](http://newspapers.com) | `newspapers` |
+| [WeRelate.org](http://werelate.org) | `werelate` |
+| [WorldVitalRecords](http://worldvitalrecords.com) | `worldvitalrecords` |
+
 ## Schema
 
 * givenName
