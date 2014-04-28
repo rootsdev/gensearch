@@ -5,7 +5,8 @@ var sites = {
   'archives': require('./sites/archives.js'),
   'billiongraves': require('./sites/billiongraves.js'),
   'familysearch': require('./sites/familysearch.js'),
-  'findagrave': require('./sites/findagrave.js')
+  'findagrave': require('./sites/findagrave.js'),
+  'geni': require('./sites/geni.js')
 };
 
 var search = module.exports = function(site, person){

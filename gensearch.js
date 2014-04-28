@@ -6,7 +6,8 @@ var sites = {
   'archives': _dereq_('./sites/archives.js'),
   'billiongraves': _dereq_('./sites/billiongraves.js'),
   'familysearch': _dereq_('./sites/familysearch.js'),
-  'findagrave': _dereq_('./sites/findagrave.js')
+  'findagrave': _dereq_('./sites/findagrave.js'),
+  'geni': _dereq_('./sites/geni.js')
 };
 
 var search = module.exports = function(site, person){
@@ -17,7 +18,7 @@ search.config = function(newConfig){
   config = newConfig;
 };
 
-},{"./sites/ancestry.js":2,"./sites/archives.js":3,"./sites/billiongraves.js":4,"./sites/familysearch.js":5,"./sites/findagrave.js":6}],2:[function(_dereq_,module,exports){
+},{"./sites/ancestry.js":2,"./sites/archives.js":3,"./sites/billiongraves.js":4,"./sites/familysearch.js":5,"./sites/findagrave.js":6,"./sites/geni.js":7}],2:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -56,7 +57,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":7}],3:[function(_dereq_,module,exports){
+},{"../utils.js":8}],3:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -90,7 +91,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":7}],4:[function(_dereq_,module,exports){
+},{"../utils.js":8}],4:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -123,7 +124,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":7}],5:[function(_dereq_,module,exports){
+},{"../utils.js":8}],5:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
     
 var defaultConfig = {
@@ -204,7 +205,7 @@ function addQueryParam(query, queryParam, paramValue) {
   }
   return query;
 };
-},{"../utils.js":7}],6:[function(_dereq_,module,exports){
+},{"../utils.js":8}],6:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -233,7 +234,33 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":7}],7:[function(_dereq_,module,exports){
+},{"../utils.js":8}],7:[function(_dereq_,module,exports){
+var utils = _dereq_('../utils.js');
+
+module.exports = function(config, data){
+
+  var url = 'http://www.geni.com/search?search_type=people&names=';
+  var name = '';
+  
+  if( data.givenName ) {
+    name += data.givenName;
+  }
+  
+  if( data.familyName ) {
+    if( name ) {
+      name += ' ';
+    }
+    name += data.familyName;
+  }
+  
+  // Replace spaces with +
+  name = name.replace(/ /g, '+');
+  
+  return url + name;
+  
+};
+
+},{"../utils.js":8}],8:[function(_dereq_,module,exports){
 var utils = {};
 
 /**
