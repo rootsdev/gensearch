@@ -1,7 +1,12 @@
 {
   "name": "gen-search",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Generate search links for genealogy websites",
+  "repository": {
+    "type: "git",
+    "url": "https://github.com/genealogysystems/gen-search"
+  },
+  "bugs": "https://github.com/genealogysystems/gen-search/issues",
   "main": "src/search.js",
   "scripts": {
     "test": "npm run build && ./node_modules/mocha/bin/mocha --recursive",
@@ -12,8 +17,8 @@
   ],
   "author": "Justin York",
   "license": "MIT",
-  "dependencies": {
+  "devDependencies": {
     "mocha": "~1.18.2",
-    "browserify": "3.44.2"
+    "browserify": "~3.44.2"
   }
 }
