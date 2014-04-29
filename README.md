@@ -96,8 +96,12 @@ var genSearch = require('gen-search');
 http://ancestry.com
 
 ```
-var url = gensearch('ancestry', data);
+var url = gensearch('ancestry', data, [options]);
 ```
+
+| option | default | notes |
+|--------|---------|-------|
+| `db` | | Search within a specific database. This value equates to the 'db' parameter value used by Ancestry. |
 
 ### archives
 
@@ -132,11 +136,12 @@ https://familysearch.org
 var url = gensearch('familysearch', data, [options]);
 ```
 
-| option | default |
-|--------|---------|
+| option | default | notes |
+|--------|---------|-------|
 | `birthRange` | 2 |
 | `deathRange` | 2 |
 | `marriageRange` | 2 |
+| `collectionId` | | Only search within a specific collection. |
 
 ### findagrave
 

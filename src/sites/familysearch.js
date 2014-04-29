@@ -60,8 +60,8 @@ module.exports = function(config, data){
   
   query = encodeURIComponent(query);
   
-  if(config.collection_id){
-    query = utils.addQueryParam(query, 'collection_id', config.collection_id);
+  if(config.collectionId){
+    query = utils.addQueryParam(query, 'collection_id', config.collectionId);
   }
   
   return fsURL + query;

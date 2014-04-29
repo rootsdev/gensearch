@@ -20,7 +20,7 @@ describe('familysearch', function(){
   
   it('collection', function(){
     test(test.data[0], 'https://familysearch.org/search/record/results#count=20&query=%2Bgivenname%3A%22Joe%20William%22~%20%2Bsurname%3AClark~&collection_id=1473014', {
-      collection_id: 1473014
+      collectionId: 1473014
     });
   });
     
