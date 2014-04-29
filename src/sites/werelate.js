@@ -1,8 +1,8 @@
 var utils = require('../utils.js');
 
 var defaultConfig = {
-  birth_range: 2,
-  death_range: 2
+  birthRange: 2,
+  deathRange: 2
 };
 
 module.exports = function(config, data){
@@ -35,11 +35,11 @@ module.exports = function(config, data){
   // Process dates and add the ranges
   if(data.birthDate) {
     query = utils.addQueryParam(query, 'bd', utils.getYear(data.birthDate));
-    query = utils.addQueryParam(query, 'br', config.birth_range);
+    query = utils.addQueryParam(query, 'br', config.birthRange);
   }
   if(data.deathDate) {
     query = utils.addQueryParam(query, 'dd', utils.getYear(data.deathDate));
-    query = utils.addQueryParam(query, 'dr', config.death_range);
+    query = utils.addQueryParam(query, 'dr', config.deathRange);
   }
   
   return baseUrl + query;

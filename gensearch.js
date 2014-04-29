@@ -98,8 +98,8 @@ module.exports = function(config, data){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
-  birth_year_range: 2,
-  death_year_range: 2
+  birthRange: 2,
+  deathRange: 2
 };
 
 module.exports = function(config, data){
@@ -117,11 +117,11 @@ module.exports = function(config, data){
   }
   if(data.birthDate) {
     query = utils.addQueryParam(query, 'BirthYear', utils.getYear(data.birthDate));
-    query = utils.addQueryParam(query, 'BirthYearSpan', config.birth_year_range);
+    query = utils.addQueryParam(query, 'BirthYearSpan', config.birthRange);
   }
   if(data.deathDate) {
     query = utils.addQueryParam(query, 'DeathYear', utils.getYear(data.deathDate));
-    query = utils.addQueryParam(query, 'DeathYearSpan', config.death_year_range);
+    query = utils.addQueryParam(query, 'DeathYearSpan', config.deathRange);
   }
 
   return url + query;
@@ -132,14 +132,14 @@ module.exports = function(config, data){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
-  year_range: 2
+  yearRange: 2
 };
 
 module.exports = function(config, data){
 
   config = utils.defaults(config, defaultConfig);
 
-  var url = 'http://billiongraves.com/pages/search/index.php#year_range=' + config.year_range + '&lim=0&action=search&exact=false&country=0&state=0&county=0';
+  var url = 'http://billiongraves.com/pages/search/index.php#year_range=' + config.yearRange + '&lim=0&action=search&exact=false&country=0&state=0&county=0';
   var query = '';
   
   if(data.givenName) {
@@ -165,9 +165,9 @@ module.exports = function(config, data){
 var utils = _dereq_('../utils.js');
     
 var defaultConfig = {
-  birth_year_range: 2,
-  death_year_range: 2,
-  marriage_year_range: 2
+  birthRange: 2,
+  deathRange: 2,
+  marriageRange: 2
 };
 
 module.exports = function(config, data){
@@ -202,7 +202,7 @@ module.exports = function(config, data){
   if(data.birthDate){
     var birthYear = utils.getYearInt(data.birthDate);
     if( birthYear ) {
-      query = addQueryParam(query, 'birth_year', (birthYear - config.birth_year_range)+'-'+(birthYear + config.birth_year_range));
+      query = addQueryParam(query, 'birth_year', (birthYear - config.birthRange)+'-'+(birthYear + config.birthRange));
     }
   }
   
@@ -210,7 +210,7 @@ module.exports = function(config, data){
   if(data.deathDate){
     var deathYear = utils.getYearInt(data.deathDate);
     if( deathYear ) {
-      query = addQueryParam(query, 'death_year', (deathYear - config.death_year_range)+'-'+(deathYear + config.death_year_range));
+      query = addQueryParam(query, 'death_year', (deathYear - config.deathRange)+'-'+(deathYear + config.deathRange));
     }
   }
 
@@ -218,7 +218,7 @@ module.exports = function(config, data){
   if(data.marriageDate){
     var marriageYear = utils.getYearInt(data.marriageDate);
     if( marriageYear ) {
-      query = addQueryParam(query, 'marriage_year', (marriageYear - config.marriage_year_range)+'-'+(marriageYear + config.marriage_year_range));
+      query = addQueryParam(query, 'marriage_year', (marriageYear - config.marriageRange)+'-'+(marriageYear + config.marriageRange));
     }
   }
   
@@ -283,9 +283,9 @@ module.exports = function(config, data){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
-  birthOffset: 2,
-  deathOffset: 2,
-  otherOffset: 2
+  birthRange: 2,
+  deathRange: 2,
+  otherRange: 2
 };
 
 module.exports = function(config, data){
@@ -319,7 +319,7 @@ module.exports = function(config, data){
       query = utils.addQueryParam(query, 'keywordsplace', data.birthPlace);
     }
     
-    query = utils.addQueryParam(query, 'yearofbirth_offset', config.birthOffset);
+    query = utils.addQueryParam(query, 'yearofbirth_offset', config.birthRange);
   }
   
   // Death
@@ -333,7 +333,7 @@ module.exports = function(config, data){
       query = utils.addQueryParam(query, 'keywordsplace', data.deathPlace);
     }
     
-    query = utils.addQueryParam(query, 'yearofdeath_offset', config.deathOffset);
+    query = utils.addQueryParam(query, 'yearofdeath_offset', config.deathRange);
   }
   
   // Other event
@@ -347,7 +347,7 @@ module.exports = function(config, data){
       query = utils.addQueryParam(query, 'keywordsplace', config.otherPlace);
     }
     
-    query = utils.addQueryParam(query, 'eventyear_offset', config.otherOffset);
+    query = utils.addQueryParam(query, 'eventyear_offset', config.otherRange);
   
   }
   
@@ -385,7 +385,7 @@ var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
   lifespan: 90,
-  date_padding: 5
+  datePadding: 5
 };
 
 module.exports = function(config, data){
@@ -411,7 +411,7 @@ module.exports = function(config, data){
     
     // We also have death date so add padding
     if(deathYear){
-      deathYear += config.date_padding;
+      deathYear += config.datePadding;
     } 
     
     // We have a birth date but not a death date, so add
@@ -421,7 +421,7 @@ module.exports = function(config, data){
     }
     
     // Pad the birth year
-    birthYear -= config.date_padding
+    birthYear -= config.datePadding
   } 
   
   // We have a death year but not a birth year
@@ -431,7 +431,7 @@ module.exports = function(config, data){
     birthYear = deathYear - config.lifespan;
     
     // Pad the death year
-    deathYear += config.date_padding;
+    deathYear += config.datePadding;
   }
   
   if(birthYear && deathYear){
@@ -474,7 +474,7 @@ var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
   lifespan: 90,
-  date_padding: 5
+  datePadding: 5
 };
 
 module.exports = function(config, data){
@@ -507,7 +507,7 @@ module.exports = function(config, data){
     
     // We also have death date so add padding
     if(deathYear){
-      deathYear += config.date_padding;
+      deathYear += config.datePadding;
     } 
     
     // We have a birth date but not a death date, so add
@@ -517,7 +517,7 @@ module.exports = function(config, data){
     }
     
     // Pad the birth year
-    birthYear -= config.date_padding
+    birthYear -= config.datePadding
   } 
   
   // We have a death year but not a birth year
@@ -527,7 +527,7 @@ module.exports = function(config, data){
     birthYear = deathYear - config.lifespan;
     
     // Pad the death year
-    deathYear += config.date_padding;
+    deathYear += config.datePadding;
   }
   
   if(birthYear && deathYear){
@@ -543,8 +543,8 @@ module.exports = function(config, data){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
-  birth_range: 2,
-  death_range: 2
+  birthRange: 2,
+  deathRange: 2
 };
 
 module.exports = function(config, data){
@@ -577,11 +577,11 @@ module.exports = function(config, data){
   // Process dates and add the ranges
   if(data.birthDate) {
     query = utils.addQueryParam(query, 'bd', utils.getYear(data.birthDate));
-    query = utils.addQueryParam(query, 'br', config.birth_range);
+    query = utils.addQueryParam(query, 'br', config.birthRange);
   }
   if(data.deathDate) {
     query = utils.addQueryParam(query, 'dd', utils.getYear(data.deathDate));
-    query = utils.addQueryParam(query, 'dr', config.death_range);
+    query = utils.addQueryParam(query, 'dr', config.deathRange);
   }
   
   return baseUrl + query;
@@ -592,7 +592,7 @@ module.exports = function(config, data){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
-  date_range: 2
+  dateRange: 2
 };
 
 module.exports = function(config, data){
@@ -616,10 +616,10 @@ module.exports = function(config, data){
   // Date
   if(data.birthDate) {
     query = utils.addQueryParam(query, 'zdate', utils.getYear(data.birthDate));
-    query = utils.addQueryParam(query, 'zdater', config.date_range);
+    query = utils.addQueryParam(query, 'zdater', config.dateRange);
   } else if(data.deathDate) {
     query = utils.addQueryParam(query, 'zdate', utils.getYear(data.deathDate));
-    query = utils.addQueryParam(query, 'zdater', config.date_range);
+    query = utils.addQueryParam(query, 'zdater', config.dateRange);
   }
   
   // TODO record type?

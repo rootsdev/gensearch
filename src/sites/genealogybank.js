@@ -2,7 +2,7 @@ var utils = require('../utils.js');
 
 var defaultConfig = {
   lifespan: 90,
-  date_padding: 5
+  datePadding: 5
 };
 
 module.exports = function(config, data){
@@ -28,7 +28,7 @@ module.exports = function(config, data){
     
     // We also have death date so add padding
     if(deathYear){
-      deathYear += config.date_padding;
+      deathYear += config.datePadding;
     } 
     
     // We have a birth date but not a death date, so add
@@ -38,7 +38,7 @@ module.exports = function(config, data){
     }
     
     // Pad the birth year
-    birthYear -= config.date_padding
+    birthYear -= config.datePadding
   } 
   
   // We have a death year but not a birth year
@@ -48,7 +48,7 @@ module.exports = function(config, data){
     birthYear = deathYear - config.lifespan;
     
     // Pad the death year
-    deathYear += config.date_padding;
+    deathYear += config.datePadding;
   }
   
   if(birthYear && deathYear){

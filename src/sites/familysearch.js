@@ -1,9 +1,9 @@
 var utils = require('../utils.js');
     
 var defaultConfig = {
-  birth_year_range: 2,
-  death_year_range: 2,
-  marriage_year_range: 2
+  birthRange: 2,
+  deathRange: 2,
+  marriageRange: 2
 };
 
 module.exports = function(config, data){
@@ -38,7 +38,7 @@ module.exports = function(config, data){
   if(data.birthDate){
     var birthYear = utils.getYearInt(data.birthDate);
     if( birthYear ) {
-      query = addQueryParam(query, 'birth_year', (birthYear - config.birth_year_range)+'-'+(birthYear + config.birth_year_range));
+      query = addQueryParam(query, 'birth_year', (birthYear - config.birthRange)+'-'+(birthYear + config.birthRange));
     }
   }
   
@@ -46,7 +46,7 @@ module.exports = function(config, data){
   if(data.deathDate){
     var deathYear = utils.getYearInt(data.deathDate);
     if( deathYear ) {
-      query = addQueryParam(query, 'death_year', (deathYear - config.death_year_range)+'-'+(deathYear + config.death_year_range));
+      query = addQueryParam(query, 'death_year', (deathYear - config.deathRange)+'-'+(deathYear + config.deathRange));
     }
   }
 
@@ -54,7 +54,7 @@ module.exports = function(config, data){
   if(data.marriageDate){
     var marriageYear = utils.getYearInt(data.marriageDate);
     if( marriageYear ) {
-      query = addQueryParam(query, 'marriage_year', (marriageYear - config.marriage_year_range)+'-'+(marriageYear + config.marriage_year_range));
+      query = addQueryParam(query, 'marriage_year', (marriageYear - config.marriageRange)+'-'+(marriageYear + config.marriageRange));
     }
   }
   

@@ -1,7 +1,7 @@
 var utils = require('../utils.js');
 
 var defaultConfig = {
-  date_range: 2
+  dateRange: 2
 };
 
 module.exports = function(config, data){
@@ -25,10 +25,10 @@ module.exports = function(config, data){
   // Date
   if(data.birthDate) {
     query = utils.addQueryParam(query, 'zdate', utils.getYear(data.birthDate));
-    query = utils.addQueryParam(query, 'zdater', config.date_range);
+    query = utils.addQueryParam(query, 'zdater', config.dateRange);
   } else if(data.deathDate) {
     query = utils.addQueryParam(query, 'zdate', utils.getYear(data.deathDate));
-    query = utils.addQueryParam(query, 'zdater', config.date_range);
+    query = utils.addQueryParam(query, 'zdater', config.dateRange);
   }
   
   // TODO record type?

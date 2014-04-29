@@ -1,9 +1,9 @@
 var utils = require('../utils.js');
 
 var defaultConfig = {
-  birthOffset: 2,
-  deathOffset: 2,
-  otherOffset: 2
+  birthRange: 2,
+  deathRange: 2,
+  otherRange: 2
 };
 
 module.exports = function(config, data){
@@ -37,7 +37,7 @@ module.exports = function(config, data){
       query = utils.addQueryParam(query, 'keywordsplace', data.birthPlace);
     }
     
-    query = utils.addQueryParam(query, 'yearofbirth_offset', config.birthOffset);
+    query = utils.addQueryParam(query, 'yearofbirth_offset', config.birthRange);
   }
   
   // Death
@@ -51,7 +51,7 @@ module.exports = function(config, data){
       query = utils.addQueryParam(query, 'keywordsplace', data.deathPlace);
     }
     
-    query = utils.addQueryParam(query, 'yearofdeath_offset', config.deathOffset);
+    query = utils.addQueryParam(query, 'yearofdeath_offset', config.deathRange);
   }
   
   // Other event
@@ -65,7 +65,7 @@ module.exports = function(config, data){
       query = utils.addQueryParam(query, 'keywordsplace', config.otherPlace);
     }
     
-    query = utils.addQueryParam(query, 'eventyear_offset', config.otherOffset);
+    query = utils.addQueryParam(query, 'eventyear_offset', config.otherRange);
   
   }
   
