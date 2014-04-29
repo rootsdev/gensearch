@@ -283,15 +283,19 @@ module.exports = function(config, data){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
-  birth_offset: 2,
-  death_offset: 2
+  birthOffset: 2,
+  deathOffset: 2,
+  otherOffset: 2
 };
 
 module.exports = function(config, data){
 
   config = utils.defaults(config, defaultConfig);
 
-  // TODO: allow for .com or other fmp sites
+  // TODO
+  // * allow for .com or other fmp sites
+  // * allow for record category
+  // * restrict to record set(s)?
   
   var baseUrl = 'http://search.findmypast.co.uk/search/world-records?firstname_variants=true';
   var query = '';
@@ -304,17 +308,48 @@ module.exports = function(config, data){
     query = utils.addQueryParam(query, 'lastname', data.familyName);
   }
   
-  // TODO: birth and death; need ability to specify which one
-  
   // Birth
-  // keywordsplace=birthplace
-  // yearofbirth=birthyear
-  // yearofbirthoffset=config.birth_offset
+  if(config.event === 'birth'){
+    
+    if(data.birthDate){
+      query = utils.addQueryParam(query, 'yearofbirth', utils.getYear(data.birthDate));
+    }
+    
+    if(data.birthPlace){
+      query = utils.addQueryParam(query, 'keywordsplace', data.birthPlace);
+    }
+    
+    query = utils.addQueryParam(query, 'yearofbirth_offset', config.birthOffset);
+  }
   
   // Death
-  // keywordsplace=deathplace
-  // yearofdeath=deathyear
-  // yearofdeathoffset=config.death_offset
+  else if(config.event === 'death'){
+    
+    if(data.deathDate){
+      query = utils.addQueryParam(query, 'yearofdeath', utils.getYear(data.deathDate));
+    }
+    
+    if(data.deathPlace){
+      query = utils.addQueryParam(query, 'keywordsplace', data.deathPlace);
+    }
+    
+    query = utils.addQueryParam(query, 'yearofdeath_offset', config.deathOffset);
+  }
+  
+  // Other event
+  else if(config.event === 'other'){
+  
+    if(config.otherDate){
+      query = utils.addQueryParam(query, 'eventyear', utils.getYear(config.otherDate));
+    }
+    
+    if(config.otherPlace){
+      query = utils.addQueryParam(query, 'keywordsplace', config.otherPlace);
+    }
+    
+    query = utils.addQueryParam(query, 'eventyear_offset', config.otherOffset);
+  
+  }
   
   return baseUrl + query;
   
