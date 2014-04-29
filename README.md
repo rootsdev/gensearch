@@ -23,14 +23,13 @@ var url = gensearch('familysearch', data, {
   birthRange: 5
 });
 
-
 // Or we can set the configuration option once and have it apply to all future searches.
 gensearch.config('familysearch', {
   birthRange: 5
 });
 
 // We can also set options for multiple sites at once
-genesearch.config({
+gensearch.config({
   familysearch: {
     birthRange: 5
   },
