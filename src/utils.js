@@ -35,7 +35,15 @@ utils.addQueryParam = function(query, name, value){
  
 utils.isObject = function(obj) {
   return obj === Object(obj);
-}; 
+};
+
+utils.isString = function(obj){
+  return toString.call(obj) == '[object String]';
+};
+
+utils.isUndefined = function(obj){
+  return obj === void 0;
+};
  
 utils.each = function(obj, iterator, context) {
   if (obj == null) return obj;
@@ -43,12 +51,12 @@ utils.each = function(obj, iterator, context) {
     obj.forEach(iterator, context);
   } else if (obj.length === +obj.length) {
     for (var i = 0, length = obj.length; i < length; i++) {
-      if (iterator.call(context, obj[i], i, obj) === breaker) return;
+      iterator.call(context, obj[i], i, obj);
     }
   } else {
     var keys = utils.keys(obj);
     for (var i = 0, length = keys.length; i < length; i++) {
-      if (iterator.call(context, obj[keys[i]], keys[i], obj) === breaker) return;
+      iterator.call(context, obj[keys[i]], keys[i], obj);
     }
   }
   return obj;

@@ -1,8 +1,8 @@
 var utils = require('../utils.js');
 
 var defaultConfig = {
-  FINDMYPAST_BIRTH_OFFSET: 2,
-  FINDMYPAST_DEATH_OFFSET: 2
+  birth_offset: 2,
+  death_offset: 2
 };
 
 module.exports = function(config, data){
@@ -27,12 +27,12 @@ module.exports = function(config, data){
   // Birth
   // keywordsplace=birthplace
   // yearofbirth=birthyear
-  // yearofbirthoffset=config.FINDMYPAST_BIRTH_OFFSET
+  // yearofbirthoffset=config.birth_offset
   
   // Death
   // keywordsplace=deathplace
   // yearofdeath=deathyear
-  // yearofdeathoffset=config.FINDMYPAST_DEATH_OFFSET
+  // yearofdeathoffset=config.death_offset
   
   return baseUrl + query;
   

@@ -1,8 +1,8 @@
 var utils = require('../utils.js');
 
 var defaultConfig = {
-  NEWSPAPERS_LIFESPAN: 90,
-  NEWSPAPERS_DATE_PADDING: 5
+  lifespan: 90,
+  date_padding: 5
 };
 
 module.exports = function(config, data){
@@ -35,27 +35,27 @@ module.exports = function(config, data){
     
     // We also have death date so add padding
     if(deathYear){
-      deathYear += config.NEWSPAPERS_DATE_PADDING;
+      deathYear += config.date_padding;
     } 
     
     // We have a birth date but not a death date, so add
     // the lifespan value to the birth year
     else {
-      deathYear = birthYear + config.NEWSPAPERS_LIFESPAN;
+      deathYear = birthYear + config.lifespan;
     }
     
     // Pad the birth year
-    birthYear -= config.NEWSPAPERS_DATE_PADDING
+    birthYear -= config.date_padding
   } 
   
   // We have a death year but not a birth year
   else if(deathYear) {
     
     // Subtract lifespan value from deathYear
-    birthYear = deathYear - config.NEWSPAPERS_LIFESPAN;
+    birthYear = deathYear - config.lifespan;
     
     // Pad the death year
-    deathYear += config.NEWSPAPERS_DATE_PADDING;
+    deathYear += config.date_padding;
   }
   
   if(birthYear && deathYear){

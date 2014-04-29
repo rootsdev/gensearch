@@ -16,12 +16,34 @@ var sites = {
   'worldvitalrecords': require('./sites/worldvitalrecords.js')
 };
 
+// Main search link generation function
 var search = module.exports = function(site, person, opts){
   if(sites[site]){
-    return sites[site](utils.extend({}, config, opts), person);
+    return sites[site](utils.extend({}, config[site], opts), person);
   }
 };
 
-search.config = function(newConfig){
-  config = newConfig;
+/**
+ * Set global config for a site. May be used in two ways:
+ * config('site', {options});
+ * config({'site': options});
+ */
+search.config = function(site, siteConfig){
+  // config('site', {options});
+  if(utils.isString(site) && utils.isObject(siteConfig)){
+    config[site] = utils.extend({}, config[site], siteConfig);
+  } 
+  
+  // config({site: options});
+  else if(site && utils.isUndefined(siteConfig)) {
+    var newConfig = site;
+    utils.each(newConfig, function(siteConfig, site){
+      config[site] = utils.extend({}, config[site], siteConfig);
+    });
+  } 
+  
+  // config()
+  else {
+    return config;
+  }
 };

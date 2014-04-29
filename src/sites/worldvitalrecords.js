@@ -1,7 +1,7 @@
 var utils = require('../utils.js');
 
 var defaultConfig = {
-  WVR_DATE_RANGE: 2
+  date_range: 2
 };
 
 module.exports = function(config, data){
@@ -25,10 +25,10 @@ module.exports = function(config, data){
   // Date
   if(data.birthDate) {
     query = utils.addQueryParam(query, 'zdate', utils.getYear(data.birthDate));
-    query = utils.addQueryParam(query, 'zdater', config.WVR_DATE_RANGE);
+    query = utils.addQueryParam(query, 'zdater', config.date_range);
   } else if(data.deathDate) {
     query = utils.addQueryParam(query, 'zdate', utils.getYear(data.deathDate));
-    query = utils.addQueryParam(query, 'zdater', config.WVR_DATE_RANGE);
+    query = utils.addQueryParam(query, 'zdater', config.date_range);
   }
   
   // TODO record type?

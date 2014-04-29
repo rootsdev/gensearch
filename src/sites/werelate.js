@@ -1,8 +1,8 @@
 var utils = require('../utils.js');
 
 var defaultConfig = {
-  WERELATE_BIRTH_RANGE: 2,
-  WERELATE_DEATH_RANGE: 2
+  birth_range: 2,
+  death_range: 2
 };
 
 module.exports = function(config, data){
@@ -35,11 +35,11 @@ module.exports = function(config, data){
   // Process dates and add the ranges
   if(data.birthDate) {
     query = utils.addQueryParam(query, 'bd', utils.getYear(data.birthDate));
-    query = utils.addQueryParam(query, 'br', config.WERELATE_BIRTH_RANGE);
+    query = utils.addQueryParam(query, 'br', config.birth_range);
   }
   if(data.deathDate) {
     query = utils.addQueryParam(query, 'dd', utils.getYear(data.deathDate));
-    query = utils.addQueryParam(query, 'dr', config.WERELATE_DEATH_RANGE);
+    query = utils.addQueryParam(query, 'dr', config.death_range);
   }
   
   return baseUrl + query;

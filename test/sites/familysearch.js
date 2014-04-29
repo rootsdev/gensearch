@@ -11,11 +11,17 @@ describe('familysearch', function(){
   });
   
   it('config', function(){
-    test(test.data[1], 'https://familysearch.org/search/record/results#count=20&query=%2Bgivenname%3A%22Joe%20William%22~%20%2Bsurname%3AClark~%20%2Bbirth_place%3ATexas~%20%2Bdeath_place%3A%22Springfield%2C%20Illinois%22~%20%2Bfather_givenname%3ADale~%20%2Bfather_surname%3AClark~%20%2Bmother_givenname%3ASusan~%20%2Bmother_surname%3AAnthony~%20%2Bspouse_givenname%3AJennifer~%20%2Bspouse_surname%3AThomas~%20%2Bmarriage_place%3A%22St%20Louis%2C%20MO%22~%20%2Bbirth_year%3A1830-1840~%20%2Bdeath_year%3A1884-1894~%20%2Bmarriage_year%3A1853-1863~', {FS_YEAR_PLUS_MINUS: 5});
+    test(test.data[1], 'https://familysearch.org/search/record/results#count=20&query=%2Bgivenname%3A%22Joe%20William%22~%20%2Bsurname%3AClark~%20%2Bbirth_place%3ATexas~%20%2Bdeath_place%3A%22Springfield%2C%20Illinois%22~%20%2Bfather_givenname%3ADale~%20%2Bfather_surname%3AClark~%20%2Bmother_givenname%3ASusan~%20%2Bmother_surname%3AAnthony~%20%2Bspouse_givenname%3AJennifer~%20%2Bspouse_surname%3AThomas~%20%2Bmarriage_place%3A%22St%20Louis%2C%20MO%22~%20%2Bbirth_year%3A1832-1838~%20%2Bdeath_year%3A1885-1893~%20%2Bmarriage_year%3A1853-1863~', {
+      birth_year_range: 3,
+      death_year_range: 4,
+      marriage_year_range: 5
+    });
   });
   
   it('collection', function(){
-    test(test.data[0], 'https://familysearch.org/search/record/results#count=20&query=%2Bgivenname%3A%22Joe%20William%22~%20%2Bsurname%3AClark~&collection_id=1473014', {collectionId: 1473014});
+    test(test.data[0], 'https://familysearch.org/search/record/results#count=20&query=%2Bgivenname%3A%22Joe%20William%22~%20%2Bsurname%3AClark~&collection_id=1473014', {
+      collection_id: 1473014
+    });
   });
     
 });
