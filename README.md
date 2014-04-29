@@ -1,6 +1,6 @@
 # gen-search
 
-Generate genealogy search links for a ton of websites.
+Generate search links for a many genealogy websites.
 
 ### __[Try the Demo](http://genealogysystems.github.io/gen-search/)__
 
