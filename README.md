@@ -12,7 +12,7 @@ Generate search links for a many genealogy websites.
 
 ## Usage
 
-```
+```javascript
 // Generate a search link for FamilySearch
 var url = gensearch('familysearch', {
   givenName: "Joe William",
@@ -46,19 +46,19 @@ gensearch.config({
 
 Download the `gensearch.js` file and include on your page.
 
-````
+```html
 <script src="gensearch.js"></script>
-````
+```
 
 #### Node
 
-````
+```shell
 npm install gen-search
-````
+```
 
-````
+```javascript
 var genSearch = require('gen-search');
-````
+```
 
 ## Schema
 
@@ -96,7 +96,7 @@ var genSearch = require('gen-search');
 
 http://ancestry.com
 
-```
+```javascript
 var url = gensearch('ancestry', data, [options]);
 ```
 
@@ -108,7 +108,7 @@ var url = gensearch('ancestry', data, [options]);
 
 http://archives.com
 
-```
+```javascript
 var url = gensearch('archives', data);
 ```
 
@@ -121,7 +121,7 @@ var url = gensearch('archives', data);
 
 http://billiongraves.com/
 
-```
+```javascript
 var url = gensearch('billiongraves', data, [options]);
 ```
 
@@ -133,7 +133,7 @@ var url = gensearch('billiongraves', data, [options]);
 
 https://familysearch.org
 
-```
+```javascript
 var url = gensearch('familysearch', data, [options]);
 ```
 
@@ -148,7 +148,7 @@ var url = gensearch('familysearch', data, [options]);
 
 http://findagrave.com
 
-```
+```javascript
 var url = gensearch('findagrave', data);
 ```
 
@@ -156,7 +156,7 @@ var url = gensearch('findagrave', data);
 
 http://findmypast.co.uk
 
-```
+```javascript
 var url = gensearch('findmypast', data, [options]);
 ```
 
@@ -173,7 +173,7 @@ var url = gensearch('findmypast', data, [options]);
 
 http://fold3.com
 
-```
+```javascript
 var url = gensearch('fold3', data);
 ```
 
@@ -183,7 +183,7 @@ Only `givenName` and `familyName` are used for Fold3 searches.
 
 http://genealogybank.com
 
-```
+```javascript
 var url = gensearch('genealogybank', data, [options]);
 ```
 
@@ -196,7 +196,7 @@ var url = gensearch('genealogybank', data, [options]);
 
 http://geni.com
 
-```
+```javascript
 var url = gensearch('geni', data);
 ```
 
@@ -206,7 +206,7 @@ Only `givenName` and `familyName` are used for Geni searches.
 
 http://www.newspapers.com/
 
-```
+```javascript
 var url = gensearch('newspapers', data, [options]);
 ```
 
@@ -219,7 +219,7 @@ var url = gensearch('newspapers', data, [options]);
 
 http://werelate.org
 
-```
+```javascript
 var url = gensearch('werelate', data, [options]);
 ```
 
@@ -232,7 +232,7 @@ var url = gensearch('werelate', data, [options]);
 
 http://worldvitalrecords.com
 
-```
+```javascript
 var url = gensearch('worldvitalrecords', data, [options]);
 ```
 
@@ -245,7 +245,7 @@ var url = gensearch('worldvitalrecords', data, [options]);
 
 #### Setup
 
-```
+```shell
 git clone https://github.com/genealogysystems/gen-search.git
 cd gen-search
 npm install
