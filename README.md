@@ -86,9 +86,11 @@ var genSearch = require('gen-search');
 * [findagrave](#findagrave) 
 * [findmypast](#findmypast) 
 * [fold3](#fold3) 
+* [genealogieonline](#genealogieonline) 
 * [genealogybank](#genealogybank) 
 * [geni](#geni)
 * [newspapers](#newspapers) 
+* [openarchives](#openarchives) 
 * [werelate](#werelate)
 * [worldvitalrecords](#worldvitalrecords) 
 
@@ -179,6 +181,19 @@ var url = gensearch('fold3', data);
 
 Only `givenName` and `familyName` are used for Fold3 searches.
 
+### genealogieonline
+
+http://genealogieonline.nl/en/
+
+```javascript
+var url = gensearch('genealogieonline', data, [options]);
+```
+
+| option | default |
+|--------|---------|
+| `birthRange` | 5 | 
+| `deathRange` | 5 |
+
 ### genealogybank
 
 http://genealogybank.com
@@ -214,6 +229,16 @@ var url = gensearch('newspapers', data, [options]);
 |--------|---------|-------|
 | `lifespan` | 90 | If either a `birthDate` or `deathDate` exists, but not both, then this value is used to approximate the missing year. For example, if the `birthDate` is `2 Feb 1856` and no `deathDate` was given then we would subtract `lifespan` from the birth year to get an approximate death year of `1766`.|
 | `datePadding` | 5 | This value is substracted from the calculated birth year and added to the calculated death year. |
+
+### openarchives
+
+http://openarch.nl
+
+```javascript
+var url = gensearch('openarch', data);
+```
+
+Only `givenName` and `familyName` are used for Open Archive searches.
 
 ### werelate
 
