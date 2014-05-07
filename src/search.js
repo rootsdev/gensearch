@@ -9,9 +9,11 @@ var sites = {
   'findagrave': require('./sites/findagrave.js'),
   'findmypast': require('./sites/findmypast.js'),
   'fold3': require('./sites/fold3.js'),
+  'genealogieonline': require('./sites/genealogieonline.js'),
   'genealogybank': require('./sites/genealogybank.js'),
   'geni': require('./sites/geni.js'),
   'newspapers': require('./sites/newspapers.js'),
+  'openarchives': require('./sites/openarchives.js'),
   'werelate': require('./sites/werelate.js'),
   'worldvitalrecords': require('./sites/worldvitalrecords.js')
 };
