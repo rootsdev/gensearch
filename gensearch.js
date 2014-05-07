@@ -10,9 +10,11 @@ var sites = {
   'findagrave': _dereq_('./sites/findagrave.js'),
   'findmypast': _dereq_('./sites/findmypast.js'),
   'fold3': _dereq_('./sites/fold3.js'),
+  'genealogieonline': _dereq_('./sites/genealogieonline.js'),
   'genealogybank': _dereq_('./sites/genealogybank.js'),
   'geni': _dereq_('./sites/geni.js'),
   'newspapers': _dereq_('./sites/newspapers.js'),
+  'openarchives': _dereq_('./sites/openarchives.js'),
   'werelate': _dereq_('./sites/werelate.js'),
   'worldvitalrecords': _dereq_('./sites/worldvitalrecords.js')
 };
@@ -49,7 +51,7 @@ search.config = function(site, siteConfig){
   }
 };
 
-},{"./sites/ancestry.js":2,"./sites/archives.js":3,"./sites/billiongraves.js":4,"./sites/familysearch.js":5,"./sites/findagrave.js":6,"./sites/findmypast.js":7,"./sites/fold3.js":8,"./sites/genealogybank.js":9,"./sites/geni.js":10,"./sites/newspapers.js":11,"./sites/werelate.js":12,"./sites/worldvitalrecords.js":13,"./utils.js":14}],2:[function(_dereq_,module,exports){
+},{"./sites/ancestry.js":2,"./sites/archives.js":3,"./sites/billiongraves.js":4,"./sites/familysearch.js":5,"./sites/findagrave.js":6,"./sites/findmypast.js":7,"./sites/fold3.js":8,"./sites/genealogieonline.js":9,"./sites/genealogybank.js":10,"./sites/geni.js":11,"./sites/newspapers.js":12,"./sites/openarchives.js":13,"./sites/werelate.js":14,"./sites/worldvitalrecords.js":15,"./utils.js":16}],2:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -94,7 +96,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":14}],3:[function(_dereq_,module,exports){
+},{"../utils.js":16}],3:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -128,7 +130,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":14}],4:[function(_dereq_,module,exports){
+},{"../utils.js":16}],4:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -161,7 +163,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":14}],5:[function(_dereq_,module,exports){
+},{"../utils.js":16}],5:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
     
 var defaultConfig = {
@@ -250,7 +252,7 @@ function addQueryParam(query, queryParam, paramValue) {
   }
   return query;
 };
-},{"../utils.js":14}],6:[function(_dereq_,module,exports){
+},{"../utils.js":16}],6:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -279,7 +281,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":14}],7:[function(_dereq_,module,exports){
+},{"../utils.js":16}],7:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -354,7 +356,7 @@ module.exports = function(config, data){
   return baseUrl + query;
   
 };
-},{"../utils.js":14}],8:[function(_dereq_,module,exports){
+},{"../utils.js":16}],8:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -380,7 +382,64 @@ module.exports = function(config, data){
   
 };
 
-},{"../utils.js":14}],9:[function(_dereq_,module,exports){
+},{"../utils.js":16}],9:[function(_dereq_,module,exports){
+var utils = _dereq_('../utils.js');
+
+var defaultConfig = {
+  birthRange: 5,
+  deathRange: 5
+};
+
+module.exports = function(config, data){
+
+  config = utils.defaults(config, defaultConfig);
+
+  var url = 'http://www.genealogieonline.nl/en/zoeken/?publication=0';	// defaults to English version of website    
+  var query = '';
+
+  if(data.givenName) {
+    query = utils.addQueryParam(query, 'q', data.familyName);
+  }
+
+  if(data.familyName) {
+    query = utils.addQueryParam(query, 'vn', data.givenName);
+  }
+
+  if(data.spouseFamilyName) {
+    query = utils.addQueryParam(query, 'pa', data.spouseFamilyName);
+  }
+
+  var place='';
+  if (data.birthPlace) {
+  	place=data.birthPlace;
+  } else {
+  	if (data.deathPlace) {
+  		place=data.deathPlace;
+  	} else {
+  		if (data.marriagePlace) {
+  			place=data.marriagePlace;
+  		}
+  	}
+  }
+  if (place) {
+    query = utils.addQueryParam(query, 'pn', place);
+  }
+  
+  if(data.birthDate) {
+    query = utils.addQueryParam(query, 'gv', utils.getYear(data.birthDate)*1-config.birthRange);
+    query = utils.addQueryParam(query, 'gt', utils.getYear(data.birthDate)*1+config.birthRange);
+  }
+
+  if(data.deathDate) {
+    query = utils.addQueryParam(query, 'ov', utils.getYear(data.deathDate)*1-config.deathRange);
+    query = utils.addQueryParam(query, 'ot', utils.getYear(data.deathDate)*1+config.deathRange);
+  }
+
+  return url + query;
+
+};
+
+},{"../utils.js":16}],10:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -443,7 +502,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":14}],10:[function(_dereq_,module,exports){
+},{"../utils.js":16}],11:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -469,7 +528,7 @@ module.exports = function(config, data){
   
 };
 
-},{"../utils.js":14}],11:[function(_dereq_,module,exports){
+},{"../utils.js":16}],12:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -539,7 +598,32 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":14}],12:[function(_dereq_,module,exports){
+},{"../utils.js":16}],13:[function(_dereq_,module,exports){
+var utils = _dereq_('../utils.js');
+
+module.exports = function(config, data){
+
+  var url = 'http://www.openarch.nl/search.php?lang=en&name='; // defaults to English version of website  
+  var query = '';
+  
+  if(data.givenName) {
+    query += data.givenName;
+  }
+  
+  if(data.familyName) {
+    if(query) {
+      query += ' ';
+    }
+    query += data.familyName;
+  }
+  
+  // Replace spaces with +
+  query = query.replace(/ /g, '+');
+  
+  return url + query;
+
+};
+},{"../utils.js":16}],14:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -588,7 +672,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":14}],13:[function(_dereq_,module,exports){
+},{"../utils.js":16}],15:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -628,7 +712,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":14}],14:[function(_dereq_,module,exports){
+},{"../utils.js":16}],16:[function(_dereq_,module,exports){
 var utils = {};
 
 /**
