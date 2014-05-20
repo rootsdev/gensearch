@@ -9,8 +9,8 @@
   "bugs": "https://github.com/genealogysystems/gen-search/issues",
   "main": "src/search.js",
   "scripts": {
-    "test": "npm run build && ./node_modules/mocha/bin/mocha --recursive",
-    "build": "./node_modules/browserify/bin/cmd.js src/search.js -s gensearch -o gensearch.js"
+    "test": "npm run build && mocha --recursive",
+    "build": "browserify src/search.js -s gensearch -o gensearch.js"
   },
   "keywords": [
     "genealogy"

@@ -89,6 +89,7 @@ var genSearch = require('gen-search');
 * [genealogieonline](#genealogieonline) 
 * [genealogybank](#genealogybank) 
 * [geni](#geni)
+* [myheritage](#myheritage)
 * [newspapers](#newspapers) 
 * [openarchives](#openarchives) 
 * [werelate](#werelate)
@@ -216,6 +217,14 @@ var url = gensearch('geni', data);
 ```
 
 Only `givenName` and `familyName` are used for Geni searches.
+
+### myheritage
+
+http://www.myheritage.com
+
+```javascript
+var url = gensearch('myheritage', data);
+```
 
 ### newspapers
 
