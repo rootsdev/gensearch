@@ -13,6 +13,7 @@ var sites = {
   'findmypast.co.uk': require('./sites/findmypast.co.uk.js'),
   'findmypast.com': require('./sites/findmypast.com.js'),
   'fold3': require('./sites/fold3.js'),
+  'geneanet.en': require('./sites/geneanet.en.js'),
   'genealogieonline': require('./sites/genealogieonline.js'),
   'genealogybank': require('./sites/genealogybank.js'),
   'geni': require('./sites/geni.js'),

@@ -80,16 +80,17 @@ var genSearch = require('gen-search');
 ## Sites
 
 * [ancestry](#ancestry)
-* [archives](#archives) 
-* [billiongraves](#billiongraves) 
+* [archives](#archives)
+* [billiongraves](#billiongraves)
 * [chroniclingamerica](#chroniclingamerica)
 * [familysearch](#familysearch)
-* [findagrave](#findagrave) 
-* [findmypast.co.uk](#findmypast.co.uk) 
-* [findmypast.com](#findmypast.com) 
-* [fold3](#fold3) 
-* [genealogieonline](#genealogieonline) 
-* [genealogybank](#genealogybank) 
+* [findagrave](#findagrave)
+* [findmypast.co.uk](#findmypast.co.uk)
+* [findmypast.com](#findmypast.com)
+* [fold3](#fold3)
+* [genealogieonline](#genealogieonline)
+* [genealogybank](#genealogybank)
+* [geneanet.en](#geneanet.en)
 * [geni](#geni)
 * [myheritage](#myheritage)
 * [newspapers](#newspapers) 
@@ -234,6 +235,18 @@ var url = gensearch('genealogybank', data, [options]);
 |--------|---------|-------|
 | `lifespan` | 90 | If either a `birthDate` or `deathDate` exists, but not both, then this value is used to approximate the missing year. For example, if the `birthDate` is `2 Feb 1856` and no `deathDate` was given then we would subtract `lifespan` from the birth year to get an approximate death year of `1766`.|
 | `datePadding` | 5 | This value is substracted from the calculated birth year and added to the calculated death year. |
+
+### geneanet.en
+
+http://en.geneanet.org/
+
+```javascript
+var url = gensearch('geneanet.en', data, [options]);
+```
+
+| option | default | notes |
+|--------|---------|-------|
+| `place` | `birth` | Determines whether the birth or death place is used for searching. Values: `birth` or `death`. |
 
 ### geni
 
