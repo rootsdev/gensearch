@@ -82,6 +82,7 @@ var genSearch = require('gen-search');
 * [ancestry](#ancestry)
 * [archives](#archives) 
 * [billiongraves](#billiongraves) 
+* [chroniclingamerica](#chroniclingamerica)
 * [familysearch](#familysearch)
 * [findagrave](#findagrave) 
 * [findmypast](#findmypast) 
@@ -131,6 +132,14 @@ var url = gensearch('billiongraves', data, [options]);
 | option | default |
 |--------|---------|
 | `yearRange` | 2 |
+
+### chroniclingamerica
+
+http://chroniclingamerica.loc.gov/
+
+```javascript
+var url = gensearch('chroniclingamerica', data);
+```
 
 ### familysearch
 

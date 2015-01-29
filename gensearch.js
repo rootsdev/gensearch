@@ -8,6 +8,7 @@ var sites = {
   'ancestry': _dereq_('./sites/ancestry.js'),
   'archives': _dereq_('./sites/archives.js'),
   'billiongraves': _dereq_('./sites/billiongraves.js'),
+  'chroniclingamerica': _dereq_('./sites/chroniclingamerica.js'),
   'familysearch': _dereq_('./sites/familysearch.js'),
   'findagrave': _dereq_('./sites/findagrave.js'),
   'findmypast': _dereq_('./sites/findmypast.js'),
@@ -54,7 +55,7 @@ search.config = function(site, siteConfig){
   }
 };
 
-},{"./sites/ancestry.js":2,"./sites/archives.js":3,"./sites/billiongraves.js":4,"./sites/familysearch.js":5,"./sites/findagrave.js":6,"./sites/findmypast.js":7,"./sites/fold3.js":8,"./sites/genealogieonline.js":9,"./sites/genealogybank.js":10,"./sites/geni.js":11,"./sites/myheritage.js":12,"./sites/newspapers.js":13,"./sites/openarchives.js":14,"./sites/werelate.js":15,"./sites/worldvitalrecords.js":16,"./utils.js":17}],2:[function(_dereq_,module,exports){
+},{"./sites/ancestry.js":2,"./sites/archives.js":3,"./sites/billiongraves.js":4,"./sites/chroniclingamerica.js":5,"./sites/familysearch.js":6,"./sites/findagrave.js":7,"./sites/findmypast.js":8,"./sites/fold3.js":9,"./sites/genealogieonline.js":10,"./sites/genealogybank.js":11,"./sites/geni.js":12,"./sites/myheritage.js":13,"./sites/newspapers.js":14,"./sites/openarchives.js":15,"./sites/werelate.js":16,"./sites/worldvitalrecords.js":17,"./utils.js":18}],2:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -99,7 +100,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":17}],3:[function(_dereq_,module,exports){
+},{"../utils.js":18}],3:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -133,7 +134,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":17}],4:[function(_dereq_,module,exports){
+},{"../utils.js":18}],4:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -166,7 +167,37 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":17}],5:[function(_dereq_,module,exports){
+},{"../utils.js":18}],5:[function(_dereq_,module,exports){
+var utils = _dereq_('../utils.js');
+
+module.exports = function(config, data){
+
+  var url = 'http://chroniclingamerica.loc.gov/search/pages/results/';    
+  
+  // Necessary param to get the dates to work
+  var query = '?dateFilterType=yearRange';
+
+  var nameParts = [];
+  if(data.givenName) {
+    nameParts.push(data.givenName);
+  }
+  if(data.familyName) {
+    nameParts.push(data.familyName);
+  }
+  query = utils.addQueryParam(query, 'proxtext', nameParts.join(' '));
+  
+  if(data.birthDate) {
+    query = utils.addQueryParam(query, 'date1', utils.getYear(data.birthDate));
+  }
+  if(data.deathDate) {
+    query = utils.addQueryParam(query, 'date2', utils.getYear(data.deathDate));
+  }
+
+  return url + query;
+
+};
+
+},{"../utils.js":18}],6:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
     
 var defaultConfig = {
@@ -255,7 +286,7 @@ function addQueryParam(query, queryParam, paramValue) {
   }
   return query;
 };
-},{"../utils.js":17}],6:[function(_dereq_,module,exports){
+},{"../utils.js":18}],7:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -284,7 +315,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":17}],7:[function(_dereq_,module,exports){
+},{"../utils.js":18}],8:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -359,7 +390,7 @@ module.exports = function(config, data){
   return baseUrl + query;
   
 };
-},{"../utils.js":17}],8:[function(_dereq_,module,exports){
+},{"../utils.js":18}],9:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -385,7 +416,7 @@ module.exports = function(config, data){
   
 };
 
-},{"../utils.js":17}],9:[function(_dereq_,module,exports){
+},{"../utils.js":18}],10:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -442,7 +473,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":17}],10:[function(_dereq_,module,exports){
+},{"../utils.js":18}],11:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -505,7 +536,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":17}],11:[function(_dereq_,module,exports){
+},{"../utils.js":18}],12:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -531,17 +562,10 @@ module.exports = function(config, data){
   
 };
 
-},{"../utils.js":17}],12:[function(_dereq_,module,exports){
+},{"../utils.js":18}],13:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
-var defaultConfig = {};
-
 module.exports = function(config, data){
-
-  config = utils.defaults(config, defaultConfig);
-
-  // qrelative_relativeName=Name+fn.MOTHERFIRST+ln.MOTHERLAST+lnmsrs.false&qrelatives-relative=Relative+rt.mother+rn.*qrelative_relativeName&qaddRelative_1_addRelativeName=Name+fn.FATHERFIRST+ln.FATHERLAST+lnmsrs.false&qrelatives-addRelative_1=Relative+rt.father+rn.*qaddRelative_1_addRelativeName&qaddRelative_2_addRelativeName=Name+fn.SPOUSEFIRST+ln.SPOUSELAST+lnmsrs.false&qrelatives-addRelative_2=Relative+rt.spouse+rn.*qaddRelative_2_addRelativeName&qrelatives=List
-  // qrelative_relativeName=Name+fn.Dale+ln.clark+lnmsrs.false&qrelatives-relative=Relative+rt.father+rn.*qrelative_relativeName&qaddRelative_1_addRelativeName=Name+fn.susan+ln.anthony+lnmsrs.false&qrelatives-addRelative_1=Relative+rt.mother+rn.*qaddRelative_1_addRelativeName&qaddRelative_2_addRelativeName=Name+fn.jennifer+ln.thomas+lnmsrs.false&qrelatives-addRelative_2=Relative+rt.spouse+rn.*qaddRelative_2_addRelativeName&qrelatives=List
   
   var url = 'http://www.myheritage.com/research';    
   var query = '?formId=master&formMode=1&action=query&catId=1';
@@ -637,7 +661,7 @@ function fixSpace(str){
   return str.replace(/ /g, '%2F3');
 }
 
-},{"../utils.js":17}],13:[function(_dereq_,module,exports){
+},{"../utils.js":18}],14:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -707,7 +731,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":17}],14:[function(_dereq_,module,exports){
+},{"../utils.js":18}],15:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -732,7 +756,7 @@ module.exports = function(config, data){
   return url + query;
 
 };
-},{"../utils.js":17}],15:[function(_dereq_,module,exports){
+},{"../utils.js":18}],16:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -781,7 +805,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":17}],16:[function(_dereq_,module,exports){
+},{"../utils.js":18}],17:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -821,7 +845,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":17}],17:[function(_dereq_,module,exports){
+},{"../utils.js":18}],18:[function(_dereq_,module,exports){
 var utils = {};
 
 /**
