@@ -1,4 +1,4 @@
-var test = require('./../tester.js')('werelate');
+var test = require('../tester.js')('werelate');
 
 describe('werelate', function(){
   

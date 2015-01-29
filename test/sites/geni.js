@@ -1,4 +1,4 @@
-var test = require('./../tester.js')('geni');
+var test = require('../tester.js')('geni');
 
 describe('geni', function(){
   

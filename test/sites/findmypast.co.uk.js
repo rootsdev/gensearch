@@ -1,6 +1,6 @@
-var test = require('./../tester.js')('findmypast');
+var test = require('../tester.js')('findmypast.co.uk');
 
-describe('findmypast', function(){
+describe('findmypast.co.uk', function(){
   
   it('1', function(){
     test(test.data[0], 'http://search.findmypast.co.uk/search/world-records?firstname_variants=true&firstname=Joe%20William&lastname=Clark');

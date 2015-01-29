@@ -1,4 +1,4 @@
-var test = require('./../tester.js')('genealogieonline');
+var test = require('../tester.js')('genealogieonline');
 
 describe('genealogieonline', function(){
 

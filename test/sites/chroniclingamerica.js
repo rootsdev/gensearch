@@ -1,4 +1,4 @@
-var test = require('./../tester.js')('chroniclingamerica');
+var test = require('../tester.js')('chroniclingamerica');
 
 describe('chroniclingamerica', function(){
   

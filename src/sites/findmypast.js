@@ -1,21 +1,18 @@
+/**
+ * This is not a site config. It is a common util for
+ * the findmypast sites that only differ in the TLD.
+ * .com vs .co.uk
+ */
+
 var utils = require('../utils.js');
 
-var defaultConfig = {
-  birthRange: 2,
-  deathRange: 2,
-  otherRange: 2
-};
-
-module.exports = function(config, data){
-
-  config = utils.defaults(config, defaultConfig);
+module.exports = function(config, data, tld){
 
   // TODO
-  // * allow for .com or other fmp sites
   // * allow for record category
   // * restrict to record set(s)?
   
-  var baseUrl = 'http://search.findmypast.co.uk/search/world-records?firstname_variants=true';
+  var baseUrl = 'http://search.findmypast.'+tld+'/search/world-records?firstname_variants=true';
   var query = '';
   
   // Name

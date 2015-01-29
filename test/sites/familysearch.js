@@ -1,4 +1,4 @@
-var test = require('./../tester.js')('familysearch');
+var test = require('../tester.js')('familysearch');
 
 describe('familysearch', function(){
   

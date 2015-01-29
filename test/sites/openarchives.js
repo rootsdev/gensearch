@@ -1,4 +1,4 @@
-var test = require('./../tester.js')('openarchives');
+var test = require('../tester.js')('openarchives');
 
 describe('openarchives', function(){
 

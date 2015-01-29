@@ -1,4 +1,4 @@
-var test = require('./../tester.js')('myheritage');
+var test = require('../tester.js')('myheritage');
 
 describe('myheritage', function(){
   

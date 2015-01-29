@@ -1,4 +1,4 @@
-var test = require('./../tester.js')('findagrave');
+var test = require('../tester.js')('findagrave');
 
 describe('findagrave', function(){
   

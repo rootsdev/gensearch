@@ -1,4 +1,4 @@
-var test = require('./../tester.js')('worldvitalrecords');
+var test = require('../tester.js')('worldvitalrecords');
 
 describe('worldvitalrecords', function(){
   

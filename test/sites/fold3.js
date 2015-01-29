@@ -1,4 +1,4 @@
-var test = require('./../tester.js')('fold3');
+var test = require('../tester.js')('fold3');
 
 describe('fold3', function(){
   

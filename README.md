@@ -85,7 +85,8 @@ var genSearch = require('gen-search');
 * [chroniclingamerica](#chroniclingamerica)
 * [familysearch](#familysearch)
 * [findagrave](#findagrave) 
-* [findmypast](#findmypast) 
+* [findmypast.co.uk](#findmypast.co.uk) 
+* [findmypast.com](#findmypast.com) 
 * [fold3](#fold3) 
 * [genealogieonline](#genealogieonline) 
 * [genealogybank](#genealogybank) 
@@ -164,12 +165,29 @@ http://findagrave.com
 var url = gensearch('findagrave', data);
 ```
 
-### findmypast
+### findmypast.co.uk
 
 http://findmypast.co.uk
 
 ```javascript
-var url = gensearch('findmypast', data, [options]);
+var url = gensearch('findmypast.co.uk', data, [options]);
+```
+
+| option | default | notes |
+|--------|---------|-------|
+| `event` | | Type of event to search for. Valid values are `birth`, `death`, and `other`. The `otherDate` and `otherPlace` options are used when `event` is `other`.
+| `birthRange` | 2 |
+| `deathRange` | 2 |
+| `otherRange` | 2 |
+| `otherDate` | | Only used when `event` is `other`. |
+| `otherPlace` | | Only used when `event` is `other`. |
+
+### findmypast.com
+
+http://findmypast.com
+
+```javascript
+var url = gensearch('findmypast.com', data, [options]);
 ```
 
 | option | default | notes |
