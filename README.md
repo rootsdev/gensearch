@@ -95,6 +95,7 @@ var genSearch = require('gen-search');
 * [myheritage](#myheritage)
 * [newspapers](#newspapers) 
 * [openarchives](#openarchives) 
+* [usgenweb](#usgenweb)
 * [werelate](#werelate)
 * [worldvitalrecords](#worldvitalrecords) 
 
@@ -288,6 +289,14 @@ var url = gensearch('openarch', data);
 ```
 
 Only `givenName` and `familyName` are used for Open Archive searches.
+
+### usgenweb
+
+http://www.usgwarchives.net/
+
+```javascript
+var url = gensearch('usgenweb', data);
+```
 
 ### werelate
 

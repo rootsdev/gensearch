@@ -20,6 +20,7 @@ var sites = {
   'myheritage': require('./sites/myheritage.js'),
   'newspapers': require('./sites/newspapers.js'),
   'openarchives': require('./sites/openarchives.js'),
+  'usgenweb': require('./sites/usgenweb.js'),
   'werelate': require('./sites/werelate.js'),
   'worldvitalrecords': require('./sites/worldvitalrecords.js')
 };
