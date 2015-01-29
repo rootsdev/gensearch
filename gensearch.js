@@ -18,6 +18,7 @@ var sites = {
   'genealogieonline': _dereq_('./sites/genealogieonline.js'),
   'genealogybank': _dereq_('./sites/genealogybank.js'),
   'geni': _dereq_('./sites/geni.js'),
+  'google': _dereq_('./sites/google.js'),
   'myheritage': _dereq_('./sites/myheritage.js'),
   'newspapers': _dereq_('./sites/newspapers.js'),
   'openarchives': _dereq_('./sites/openarchives.js'),
@@ -58,7 +59,7 @@ search.config = function(site, siteConfig){
   }
 };
 
-},{"./sites/ancestry.js":2,"./sites/archives.js":3,"./sites/billiongraves.js":4,"./sites/chroniclingamerica.js":5,"./sites/familysearch.js":6,"./sites/findagrave.js":7,"./sites/findmypast.co.uk.js":8,"./sites/findmypast.com.js":9,"./sites/fold3.js":11,"./sites/genealogieonline.js":12,"./sites/genealogybank.js":13,"./sites/geneanet.en.js":14,"./sites/geni.js":15,"./sites/myheritage.js":16,"./sites/newspapers.js":17,"./sites/openarchives.js":18,"./sites/usgenweb.js":19,"./sites/werelate.js":20,"./sites/worldvitalrecords.js":21,"./utils.js":22}],2:[function(_dereq_,module,exports){
+},{"./sites/ancestry.js":2,"./sites/archives.js":3,"./sites/billiongraves.js":4,"./sites/chroniclingamerica.js":5,"./sites/familysearch.js":6,"./sites/findagrave.js":7,"./sites/findmypast.co.uk.js":8,"./sites/findmypast.com.js":9,"./sites/fold3.js":11,"./sites/genealogieonline.js":12,"./sites/genealogybank.js":13,"./sites/geneanet.en.js":14,"./sites/geni.js":15,"./sites/google.js":16,"./sites/myheritage.js":17,"./sites/newspapers.js":18,"./sites/openarchives.js":19,"./sites/usgenweb.js":20,"./sites/werelate.js":21,"./sites/worldvitalrecords.js":22,"./utils.js":23}],2:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -103,7 +104,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":22}],3:[function(_dereq_,module,exports){
+},{"../utils.js":23}],3:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -137,7 +138,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":22}],4:[function(_dereq_,module,exports){
+},{"../utils.js":23}],4:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -170,7 +171,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":22}],5:[function(_dereq_,module,exports){
+},{"../utils.js":23}],5:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -200,7 +201,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":22}],6:[function(_dereq_,module,exports){
+},{"../utils.js":23}],6:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
     
 var defaultConfig = {
@@ -289,7 +290,7 @@ function addQueryParam(query, queryParam, paramValue) {
   }
   return query;
 };
-},{"../utils.js":22}],7:[function(_dereq_,module,exports){
+},{"../utils.js":23}],7:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -318,7 +319,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":22}],8:[function(_dereq_,module,exports){
+},{"../utils.js":23}],8:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js'),
     fmp = _dereq_('./findmypast.js');
 
@@ -332,7 +333,7 @@ module.exports = function(config, data){
   config = utils.defaults(config, defaultConfig);
   return fmp(config, data, 'co.uk');
 };
-},{"../utils.js":22,"./findmypast.js":10}],9:[function(_dereq_,module,exports){
+},{"../utils.js":23,"./findmypast.js":10}],9:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js'),
     fmp = _dereq_('./findmypast.js');
 
@@ -346,7 +347,7 @@ module.exports = function(config, data){
   config = utils.defaults(config, defaultConfig);
   return fmp(config, data, 'com');
 };
-},{"../utils.js":22,"./findmypast.js":10}],10:[function(_dereq_,module,exports){
+},{"../utils.js":23,"./findmypast.js":10}],10:[function(_dereq_,module,exports){
 /**
  * This is not a site config. It is a common util for
  * the findmypast sites that only differ in the TLD.
@@ -418,7 +419,7 @@ module.exports = function(config, data, tld){
   return baseUrl + query;
   
 };
-},{"../utils.js":22}],11:[function(_dereq_,module,exports){
+},{"../utils.js":23}],11:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -444,7 +445,7 @@ module.exports = function(config, data){
   
 };
 
-},{"../utils.js":22}],12:[function(_dereq_,module,exports){
+},{"../utils.js":23}],12:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -501,7 +502,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":22}],13:[function(_dereq_,module,exports){
+},{"../utils.js":23}],13:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -564,7 +565,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":22}],14:[function(_dereq_,module,exports){
+},{"../utils.js":23}],14:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -605,7 +606,7 @@ module.exports = function(config, data){
   return url + query;
   
 };
-},{"../utils.js":22}],15:[function(_dereq_,module,exports){
+},{"../utils.js":23}],15:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -631,7 +632,28 @@ module.exports = function(config, data){
   
 };
 
-},{"../utils.js":22}],16:[function(_dereq_,module,exports){
+},{"../utils.js":23}],16:[function(_dereq_,module,exports){
+var utils = _dereq_('../utils.js');
+
+module.exports = function(config, data){
+
+  var url = 'https://www.google.com/search?q=';
+
+  var searchWords = ['~genealogy'];
+  if(data.givenName) {
+    searchWords.push(data.givenName);
+  }
+  if(data.familyName) {
+    searchWords.push(data.familyName);
+  }
+  
+  if(data.birthPlace) {
+    searchWords.push(data.birthPlace);
+  }
+  
+  return url += encodeURIComponent(searchWords.join(' '));
+};
+},{"../utils.js":23}],17:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -730,7 +752,7 @@ function fixSpace(str){
   return str.replace(/ /g, '%2F3');
 }
 
-},{"../utils.js":22}],17:[function(_dereq_,module,exports){
+},{"../utils.js":23}],18:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -800,7 +822,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":22}],18:[function(_dereq_,module,exports){
+},{"../utils.js":23}],19:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -825,7 +847,7 @@ module.exports = function(config, data){
   return url + query;
 
 };
-},{"../utils.js":22}],19:[function(_dereq_,module,exports){
+},{"../utils.js":23}],20:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -847,7 +869,7 @@ module.exports = function(config, data){
   return url + query;
 
 };
-},{"../utils.js":22}],20:[function(_dereq_,module,exports){
+},{"../utils.js":23}],21:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -896,7 +918,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":22}],21:[function(_dereq_,module,exports){
+},{"../utils.js":23}],22:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -936,7 +958,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":22}],22:[function(_dereq_,module,exports){
+},{"../utils.js":23}],23:[function(_dereq_,module,exports){
 var utils = {};
 
 /**

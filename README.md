@@ -92,6 +92,7 @@ var genSearch = require('gen-search');
 * [genealogybank](#genealogybank)
 * [geneanet.en](#geneanet.en)
 * [geni](#geni)
+* [google](#google)
 * [myheritage](#myheritage)
 * [newspapers](#newspapers) 
 * [openarchives](#openarchives) 
@@ -258,6 +259,14 @@ var url = gensearch('geni', data);
 ```
 
 Only `givenName` and `familyName` are used for Geni searches.
+
+### google
+
+https://www.google.com
+
+```javascript
+var url = gensearch('google', data);
+```
 
 ### myheritage
 
