@@ -27,6 +27,7 @@ var sites = {
   'openarchives': require('./sites/openarchives.js'),
   'usgenweb': require('./sites/usgenweb.js'),
   'werelate': require('./sites/werelate.js'),
+  'wikitree': require('./sites/wikitree.js'),
   'worldvitalrecords': require('./sites/worldvitalrecords.js')
 };
 

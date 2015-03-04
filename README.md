@@ -102,6 +102,7 @@ var genSearch = require('gen-search');
 * [openarchives](#openarchives) 
 * [usgenweb](#usgenweb)
 * [werelate](#werelate)
+* [wikitree](#wikitree)
 * [worldvitalrecords](#worldvitalrecords) 
 
 ### americanancestors
@@ -355,6 +356,14 @@ var url = gensearch('werelate', data, [options]);
 |--------|---------|
 | `birthRange` | 2 |
 | `deathRange` | 2 |
+
+### wikitree
+
+http://www.wikitree.com/
+
+```javascript
+var url = gensearch('wikitree', data);
+```
 
 ### worldvitalrecords
 
