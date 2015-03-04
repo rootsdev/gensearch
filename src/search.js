@@ -17,6 +17,7 @@ var sites = {
   'geneanet.en': require('./sites/geneanet.en.js'),
   'genealogieonline': require('./sites/genealogieonline.js'),
   'genealogybank': require('./sites/genealogybank.js'),
+  'gengophers': require('./sites/gengophers.js'),
   'geni': require('./sites/geni.js'),
   'google': require('./sites/google.js'),
   'nlatrove': require('./sites/nlatrove.js'),

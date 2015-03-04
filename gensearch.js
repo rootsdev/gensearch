@@ -18,6 +18,7 @@ var sites = {
   'geneanet.en': _dereq_('./sites/geneanet.en.js'),
   'genealogieonline': _dereq_('./sites/genealogieonline.js'),
   'genealogybank': _dereq_('./sites/genealogybank.js'),
+  'gengophers': _dereq_('./sites/gengophers.js'),
   'geni': _dereq_('./sites/geni.js'),
   'google': _dereq_('./sites/google.js'),
   'nlatrove': _dereq_('./sites/nlatrove.js'),
@@ -62,7 +63,7 @@ search.config = function(site, siteConfig){
   }
 };
 
-},{"./sites/americanancestors.js":2,"./sites/ancestry.js":3,"./sites/archives.js":4,"./sites/billiongraves.js":5,"./sites/chroniclingamerica.js":6,"./sites/familysearch.js":7,"./sites/findagrave.js":8,"./sites/findmypast.co.uk.js":9,"./sites/findmypast.com.js":10,"./sites/fold3.js":12,"./sites/genealogieonline.js":13,"./sites/genealogybank.js":14,"./sites/geneanet.en.js":15,"./sites/geni.js":16,"./sites/google.js":17,"./sites/mocavo.js":18,"./sites/myheritage.js":19,"./sites/newspapers.js":20,"./sites/nlatrove.js":21,"./sites/openarchives.js":22,"./sites/usgenweb.js":23,"./sites/werelate.js":24,"./sites/worldvitalrecords.js":25,"./utils.js":26}],2:[function(_dereq_,module,exports){
+},{"./sites/americanancestors.js":2,"./sites/ancestry.js":3,"./sites/archives.js":4,"./sites/billiongraves.js":5,"./sites/chroniclingamerica.js":6,"./sites/familysearch.js":7,"./sites/findagrave.js":8,"./sites/findmypast.co.uk.js":9,"./sites/findmypast.com.js":10,"./sites/fold3.js":12,"./sites/genealogieonline.js":13,"./sites/genealogybank.js":14,"./sites/geneanet.en.js":15,"./sites/gengophers.js":16,"./sites/geni.js":17,"./sites/google.js":18,"./sites/mocavo.js":19,"./sites/myheritage.js":20,"./sites/newspapers.js":21,"./sites/nlatrove.js":22,"./sites/openarchives.js":23,"./sites/usgenweb.js":24,"./sites/werelate.js":25,"./sites/worldvitalrecords.js":26,"./utils.js":27}],2:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -94,7 +95,7 @@ module.exports = function(config, data){
   
   return url + utils.queryString(params);
 };
-},{"../utils.js":26}],3:[function(_dereq_,module,exports){
+},{"../utils.js":27}],3:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -139,7 +140,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":26}],4:[function(_dereq_,module,exports){
+},{"../utils.js":27}],4:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -173,7 +174,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":26}],5:[function(_dereq_,module,exports){
+},{"../utils.js":27}],5:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -206,7 +207,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":26}],6:[function(_dereq_,module,exports){
+},{"../utils.js":27}],6:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -236,7 +237,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":26}],7:[function(_dereq_,module,exports){
+},{"../utils.js":27}],7:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
     
 var defaultConfig = {
@@ -325,7 +326,7 @@ function addQueryParam(query, queryParam, paramValue) {
   }
   return query;
 };
-},{"../utils.js":26}],8:[function(_dereq_,module,exports){
+},{"../utils.js":27}],8:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -354,7 +355,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":26}],9:[function(_dereq_,module,exports){
+},{"../utils.js":27}],9:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js'),
     fmp = _dereq_('./findmypast.js');
 
@@ -368,7 +369,7 @@ module.exports = function(config, data){
   config = utils.defaults(config, defaultConfig);
   return fmp(config, data, 'co.uk');
 };
-},{"../utils.js":26,"./findmypast.js":11}],10:[function(_dereq_,module,exports){
+},{"../utils.js":27,"./findmypast.js":11}],10:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js'),
     fmp = _dereq_('./findmypast.js');
 
@@ -382,7 +383,7 @@ module.exports = function(config, data){
   config = utils.defaults(config, defaultConfig);
   return fmp(config, data, 'com');
 };
-},{"../utils.js":26,"./findmypast.js":11}],11:[function(_dereq_,module,exports){
+},{"../utils.js":27,"./findmypast.js":11}],11:[function(_dereq_,module,exports){
 /**
  * This is not a site config. It is a common util for
  * the findmypast sites that only differ in the TLD.
@@ -454,7 +455,7 @@ module.exports = function(config, data, tld){
   return baseUrl + query;
   
 };
-},{"../utils.js":26}],12:[function(_dereq_,module,exports){
+},{"../utils.js":27}],12:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -480,7 +481,7 @@ module.exports = function(config, data){
   
 };
 
-},{"../utils.js":26}],13:[function(_dereq_,module,exports){
+},{"../utils.js":27}],13:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -537,7 +538,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":26}],14:[function(_dereq_,module,exports){
+},{"../utils.js":27}],14:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -600,7 +601,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":26}],15:[function(_dereq_,module,exports){
+},{"../utils.js":27}],15:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -641,7 +642,27 @@ module.exports = function(config, data){
   return url + query;
   
 };
-},{"../utils.js":26}],16:[function(_dereq_,module,exports){
+},{"../utils.js":27}],16:[function(_dereq_,module,exports){
+var utils = _dereq_('../utils.js');
+
+module.exports = function(config, data){
+
+  var url = 'https://www.gengophers.com/#/search?';
+  
+  var params = {
+    page: 1
+  };
+  
+  if(data.givenName) {
+    params.given = data.givenName;
+  }
+  if(data.familyName) {
+    params.surname = data.familyName
+  }
+  
+  return url + utils.queryString(params);;
+};
+},{"../utils.js":27}],17:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -667,7 +688,7 @@ module.exports = function(config, data){
   
 };
 
-},{"../utils.js":26}],17:[function(_dereq_,module,exports){
+},{"../utils.js":27}],18:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -688,7 +709,7 @@ module.exports = function(config, data){
   
   return url += encodeURIComponent(searchWords.join(' '));
 };
-},{"../utils.js":26}],18:[function(_dereq_,module,exports){
+},{"../utils.js":27}],19:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -704,7 +725,7 @@ module.exports = function(config, data){
   
   return url;
 };
-},{"../utils.js":26}],19:[function(_dereq_,module,exports){
+},{"../utils.js":27}],20:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -803,7 +824,7 @@ function fixSpace(str){
   return str.replace(/ /g, '%2F3');
 }
 
-},{"../utils.js":26}],20:[function(_dereq_,module,exports){
+},{"../utils.js":27}],21:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -873,7 +894,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":26}],21:[function(_dereq_,module,exports){
+},{"../utils.js":27}],22:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -890,7 +911,7 @@ module.exports = function(config, data){
   
   return url + encodeURIComponent(parts.join(' '));
 };
-},{"../utils.js":26}],22:[function(_dereq_,module,exports){
+},{"../utils.js":27}],23:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -915,7 +936,7 @@ module.exports = function(config, data){
   return url + query;
 
 };
-},{"../utils.js":26}],23:[function(_dereq_,module,exports){
+},{"../utils.js":27}],24:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 module.exports = function(config, data){
@@ -937,7 +958,7 @@ module.exports = function(config, data){
   return url + query;
 
 };
-},{"../utils.js":26}],24:[function(_dereq_,module,exports){
+},{"../utils.js":27}],25:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -986,7 +1007,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":26}],25:[function(_dereq_,module,exports){
+},{"../utils.js":27}],26:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
 
 var defaultConfig = {
@@ -1026,7 +1047,7 @@ module.exports = function(config, data){
 
 };
 
-},{"../utils.js":26}],26:[function(_dereq_,module,exports){
+},{"../utils.js":27}],27:[function(_dereq_,module,exports){
 var utils = {};
 
 /**

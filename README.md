@@ -92,6 +92,7 @@ var genSearch = require('gen-search');
 * [genealogieonline](#genealogieonline)
 * [genealogybank](#genealogybank)
 * [geneanet.en](#geneaneten)
+* [gengophers](#gengophers)
 * [geni](#geni)
 * [google](#google)
 * [nla trove](#nla-trove)
@@ -260,6 +261,14 @@ var url = gensearch('geneanet.en', data, [options]);
 | option | default | notes |
 |--------|---------|-------|
 | `place` | `birth` | Determines whether the birth or death place is used for searching. Values: `birth` or `death`. |
+
+### gengophers
+
+https://www.gengophers.com
+
+```javascript
+var url = gensearch('gengophers', data);
+```
 
 ### geni
 
