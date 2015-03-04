@@ -93,6 +93,7 @@ var genSearch = require('gen-search');
 * [geneanet.en](#geneaneten)
 * [geni](#geni)
 * [google](#google)
+* [nla trove](#nla-trove)
 * [mocavo](#mocavo)
 * [myheritage](#myheritage)
 * [newspapers](#newspapers) 
