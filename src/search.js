@@ -4,6 +4,7 @@ var utils = require('./utils.js'),
 // We have to explicitly list the sites, instead of
 // dynamically loading, so that browserify can see them
 var sites = {
+  'americanancestors': require('./sites/americanancestors.js'),
   'ancestry': require('./sites/ancestry.js'),
   'archives': require('./sites/archives.js'),
   'billiongraves': require('./sites/billiongraves.js'),

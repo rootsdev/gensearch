@@ -29,6 +29,19 @@ utils.addQueryParam = function(query, name, value){
 };
 
 /**
+ * Take in a map of param names and values
+ * and return an encoded query string
+ * without the leading '?'
+ */
+utils.queryString = function(params){
+  var parts = [];
+  utils.each(params, function(val, key){
+    parts.push(key + '=' + encodeURIComponent(val));
+  });
+  return parts.join('&');
+};
+
+/**
  * Functions lifted from underscore.js
  * http://underscorejs.org/
  */

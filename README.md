@@ -79,6 +79,7 @@ var genSearch = require('gen-search');
 
 ## Sites
 
+* [americanancestors](#americanancestors)
 * [ancestry](#ancestry)
 * [archives](#archives)
 * [billiongraves](#billiongraves)
@@ -101,6 +102,14 @@ var genSearch = require('gen-search');
 * [usgenweb](#usgenweb)
 * [werelate](#werelate)
 * [worldvitalrecords](#worldvitalrecords) 
+
+### americanancestors
+
+http://www.americanancestors.org/
+
+```javascript
+var url = gensearch('americanancestors', data);
+```
 
 ### ancestry
 

@@ -15,4 +15,11 @@ describe('utils', function(){
     assert.deepEqual(utils.extend({}, {one:1},{two:2},{one:3}), {one:3,two:2});
   });
   
+  it('queryString', function(){
+    assert.equal(utils.queryString({
+      'some': 'vals,',
+      'more': 'we-rd'
+    }), 'some=vals%2C&more=we-rd');
+  });
+  
 });
