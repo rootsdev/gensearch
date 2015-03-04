@@ -90,7 +90,7 @@ var genSearch = require('gen-search');
 * [fold3](#fold3)
 * [genealogieonline](#genealogieonline)
 * [genealogybank](#genealogybank)
-* [geneanet.en](#geneanet.en)
+* [geneanet.en](#geneaneten)
 * [geni](#geni)
 * [google](#google)
 * [mocavo](#mocavo)
