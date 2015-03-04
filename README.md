@@ -95,9 +95,9 @@ var genSearch = require('gen-search');
 * [gengophers](#gengophers)
 * [geni](#geni)
 * [google](#google)
-* [nla trove](#nla-trove)
 * [mocavo](#mocavo)
 * [myheritage](#myheritage)
+* [nla trove](#nla-trove)
 * [newspapers](#newspapers) 
 * [openarchives](#openarchives) 
 * [usgenweb](#usgenweb)
@@ -289,14 +289,6 @@ https://www.google.com
 var url = gensearch('google', data);
 ```
 
-### nla trove
-
-http://trove.nla.gov.au/
-
-```javascript
-var url = gensearch('nlatrove', data);
-```
-
 ### mocavo
 
 http://www.mocavo.com/
@@ -325,6 +317,14 @@ var url = gensearch('newspapers', data, [options]);
 |--------|---------|-------|
 | `lifespan` | 90 | If either a `birthDate` or `deathDate` exists, but not both, then this value is used to approximate the missing year. For example, if the `birthDate` is `2 Feb 1856` and no `deathDate` was given then we would subtract `lifespan` from the birth year to get an approximate death year of `1766`.|
 | `datePadding` | 5 | This value is substracted from the calculated birth year and added to the calculated death year. |
+
+### nla trove
+
+http://trove.nla.gov.au/
+
+```javascript
+var url = gensearch('nlatrove', data);
+```
 
 ### openarchives
 
