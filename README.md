@@ -93,6 +93,7 @@ var genSearch = require('gen-search');
 * [geneanet.en](#geneanet.en)
 * [geni](#geni)
 * [google](#google)
+* [mocavo](#mocavo)
 * [myheritage](#myheritage)
 * [newspapers](#newspapers) 
 * [openarchives](#openarchives) 
@@ -266,6 +267,22 @@ https://www.google.com
 
 ```javascript
 var url = gensearch('google', data);
+```
+
+### nla trove
+
+http://trove.nla.gov.au/
+
+```javascript
+var url = gensearch('nlatrove', data);
+```
+
+### mocavo
+
+http://www.mocavo.com/
+
+```javascript
+var url = gensearch('mocavo', data);
 ```
 
 ### myheritage
