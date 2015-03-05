@@ -1,4 +1,4 @@
-# gen-search
+# gensearch
 
 Generate search links for a many genealogy websites.
 
