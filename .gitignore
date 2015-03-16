@@ -1,1 +1,4 @@
 node_modules
+.c9
+coverage
+npm-debug.log

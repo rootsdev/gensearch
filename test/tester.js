@@ -1,5 +1,5 @@
 var assert = require('assert'),
-    search = require(require('path').join(__dirname, '..', 'gensearch.js')),
+    search = require(require('path').join(__dirname, '..', 'src', 'search')),
     data = require('./test-data.js');
 
 module.exports = function(site){

@@ -1,8 +1,12 @@
+[![Build Status](https://travis-ci.org/genealogysystems/gensearch.svg)](https://travis-ci.org/genealogysystems/gensearch)
+[![Codacy Badge](https://www.codacy.com/project/badge/0cca15bd252a4c0fbf901ebb29132ece)](https://www.codacy.com/public/justincyork/gensearch)
+[![Coverage Status](https://coveralls.io/repos/genealogysystems/gensearch/badge.svg)](https://coveralls.io/r/genealogysystems/gensearch)
+
 # gensearch
 
 Generate search links for a many genealogy websites.
 
-### __[Try the Demo](http://genealogysystems.github.io/gen-search/)__
+### __[Try the Demo](http://genealogysystems.github.io/gensearch/)__
 
 * [Usage](#usage)
 * [Installation Instructions](#install)

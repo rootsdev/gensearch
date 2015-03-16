@@ -9,8 +9,10 @@
   "bugs": "https://github.com/genealogysystems/gen-search/issues",
   "main": "src/search.js",
   "scripts": {
-    "test": "npm run build && mocha --recursive",
-    "build": "browserify src/search.js -s gensearch -o gensearch.js"
+    "test": "mocha --recursive",
+    "build": "browserify src/search.js -s gensearch -o gensearch.js",
+    "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha -- --recursive",
+    "coveralls": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- --recursive && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage"
   },
   "keywords": [
     "genealogy"
@@ -18,7 +20,9 @@
   "author": "Justin York",
   "license": "MIT",
   "devDependencies": {
-    "mocha": "~1.18.2",
-    "browserify": "~3.44.2"
+    "browserify": "3.44.2",
+    "coveralls": "2.11.2",
+    "istanbul": "0.3.8",
+    "mocha": "2.2.1"
   }
 }
