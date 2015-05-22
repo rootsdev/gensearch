@@ -1,5 +1,4 @@
 [![Build Status](https://travis-ci.org/genealogysystems/gensearch.svg)](https://travis-ci.org/genealogysystems/gensearch)
-[![Codacy Badge](https://www.codacy.com/project/badge/0cca15bd252a4c0fbf901ebb29132ece)](https://www.codacy.com/public/justincyork/gensearch)
 [![Coverage Status](https://coveralls.io/repos/genealogysystems/gensearch/badge.svg)](https://coveralls.io/r/genealogysystems/gensearch)
 
 # gensearch

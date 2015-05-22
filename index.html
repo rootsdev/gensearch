@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>gen-search demo</title>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+          width: 1000px;
+        }
+        .btn-row {
+          margin-bottom: 15px;
+        }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Gen-Search Demo</h1>
+      
+      <div class="alert alert-info">
+        <p>This is just a demo that shows how the <a  href="https://github.com/genealogysystems/gen-search">gen-search</a> JavaScript library works.</p>
+      </div>
+      
+      <div class="col-md-8">
+        <div id="schema" class="form-horizontal"></div>
+        <div class="col-md-offset-7">
+          <button id="gen-links" class="btn btn-primary">Generate Links</button>
+        </div>
+      </div>
+      <div id="links" class="form-horizontal col-md-4"></div>
+    </div>
+    
+    <a href="https://github.com/genealogysystems/gen-search"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+
+    <script src="gensearch.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script>
+        var sites = {
+              'ancestry': 'Ancestry.com',
+              'archives': 'Archives.com',
+              'billiongraves': 'Billion Graves',
+              'familysearch': 'FamilySearch',
+              'findagrave': 'Find-A-Grave',
+              'findmypast': 'Find-My-Past',
+              'fold3': 'Fold3',
+              'genealogybank': 'GenealogyBank',
+              'geni': 'Geni',
+              'newspapers': 'Newspapers.com',
+              'werelate': 'WeRelate.org',
+              'worldvitalrecords': 'WorldVitalRecords'
+            },
+            props = {
+              givenName: 'Given Name',
+              familyName: 'Family Name',
+              birthPlace: 'Birth Place',
+              birthDate: 'Birth Date',
+              deathPlace: 'Death Place',
+              deathDate: 'Death Date',
+              marriagePlace: 'Marriage Place',
+              marriageDate: 'Marriage Date',
+              fatherGivenName: 'Father\'s Given Name',
+              fatherFamilyName: 'Father\'s Family Name',
+              motherGivenName: 'Mother\'s Given Name',
+              motherFamilyName: 'Mother\'s Family Name',
+              spouseGivenName: 'Spouse\'s Given Name',
+              spouseFamilyName: 'Spouse\'s Family Name'
+            };
+        
+        $(document).ready(function(){
+          
+          var formList = $('#schema');
+        
+          // Add form elements
+          $.each(props, function(key, display){
+            formList.append(
+              $('<div class="form-group">')
+                .append('<label for="'+key+'" class="col-sm-6 control-label">'+display+'</label>')
+                .append('<div class="col-sm-6"><input type="text" class="form-control" id="'+key+'" placeholder="'+display+'"></div>')
+            );
+          });
+          
+          // Bind enter key
+          $('input', formList).keypress(function(e) {
+            if(e.which == 13) {
+              links();
+            }
+          });
+          
+          // Generate Links button
+          $('#gen-links').click(links);
+          
+        });
+        
+        /**
+         * Generate Links
+         */
+        function links(){
+          
+          // Gather data
+          var data = {};
+          $.each(props, function(key){
+            var value = $('#' + key).val().trim();
+            if(value){
+              data[key] = value;
+            }
+          });
+          
+          // Clear any old links
+          var linkList = $('#links').html('');
+          
+          // Generate links
+          $.each(sites, function(key, display){
+            var url = gensearch(key, data);
+            linkList.append('<div class="btn-row"><a class="btn btn-success" target="_blank" href="'+url+'">'+display+'</a></div>');
+          });
+        };
+    </script>
+  </body>
+</html>
