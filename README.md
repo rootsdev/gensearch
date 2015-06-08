@@ -5,7 +5,7 @@
 
 Generate search links for a many genealogy websites.
 
-### __[Try the Demo](http://genealogysystems.github.io/gensearch/)__
+### __[Try the Demo](http://rootsdev.github.io/gensearch/)__
 
 * [Usage](#usage)
 * [Installation Instructions](#install)
