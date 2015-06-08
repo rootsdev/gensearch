@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.org/genealogysystems/gensearch.svg)](https://travis-ci.org/genealogysystems/gensearch)
-[![Coverage Status](https://coveralls.io/repos/genealogysystems/gensearch/badge.svg)](https://coveralls.io/r/genealogysystems/gensearch)
+[![Build Status](https://travis-ci.org/rootsdev/gensearch.svg)](https://travis-ci.org/rootsdev/gensearch)
+[![Coverage Status](https://coveralls.io/repos/rootsdev/gensearch/badge.svg)](https://coveralls.io/r/rootsdev/gensearch)
 
 # gensearch
 
@@ -386,16 +386,16 @@ var url = gensearch('worldvitalrecords', data, [options]);
 #### Setup
 
 ```shell
-git clone https://github.com/genealogysystems/gen-search.git
+git clone https://github.com/rootsdev/gen-search.git
 cd gen-search
 npm install
 ```
 
 #### Add a site
 
-1. Create the site file in the [src/sites](https://github.com/genealogysystems/gen-search/tree/master/src/sites) directory. Look at [archives.js](https://github.com/genealogysystems/gen-search/blob/master/src/sites/archives.js) for a simple example or [familysearch.js](https://github.com/genealogysystems/gen-search/blob/master/src/sites/familysearch.js) for a more complex example.
-2. Add the new site to the [src/search.js](https://github.com/genealogysystems/gen-search/blob/master/src/search.js) site list, in alphabetical order please.
-3. Add a test file in the [test/sites](https://github.com/genealogysystems/gen-search/tree/master/test/sites) directory. Look at any of the other site test files for an example.
+1. Create the site file in the [src/sites](https://github.com/rootsdev/gen-search/tree/master/src/sites) directory. Look at [archives.js](https://github.com/rootsdev/gen-search/blob/master/src/sites/archives.js) for a simple example or [familysearch.js](https://github.com/rootsdev/gen-search/blob/master/src/sites/familysearch.js) for a more complex example.
+2. Add the new site to the [src/search.js](https://github.com/rootsdev/gen-search/blob/master/src/search.js) site list, in alphabetical order please.
+3. Add a test file in the [test/sites](https://github.com/rootsdev/gen-search/tree/master/test/sites) directory. Look at any of the other site test files for an example.
 4. Run tests with `npm test`. The `gensearch.js` file will be automatically built with [browserify](https://github.com/substack/node-browserify) before the tests are run.
 5. Document the new site in the README file, in alphabetical order please. Be sure to add a link in the site list just before the site specific docs.
 6. Commit and submit a pull request.
