@@ -32,7 +32,7 @@ var sites = {
 };
 
 // Main search link generation function
-var search = module.exports = function(site, person, opts){
+var gensearch = module.exports = function(site, person, opts){
   if(sites[site]){
     return sites[site](utils.extend({}, config[site], opts), person);
   }
@@ -43,7 +43,7 @@ var search = module.exports = function(site, person, opts){
  * config('site', {options});
  * config({'site': options});
  */
-search.config = function(site, siteConfig){
+gensearch.config = function(site, siteConfig){
   // config('site', {options});
   if(utils.isString(site) && utils.isObject(siteConfig)){
     config[site] = utils.extend({}, config[site], siteConfig);
@@ -62,3 +62,8 @@ search.config = function(site, siteConfig){
     return config;
   }
 };
+
+/**
+ * Expose sites list.
+ */
+gensearch.sites = sites;
