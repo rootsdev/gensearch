@@ -3,38 +3,45 @@ var utils = require('./utils.js'),
 
 // We have to explicitly list the sites, instead of
 // dynamically loading, so that browserify can see them
-var sites = {
-  'americanancestors': require('./sites/americanancestors.js'),
-  'ancestry': require('./sites/ancestry.js'),
-  'archives': require('./sites/archives.js'),
-  'billiongraves': require('./sites/billiongraves.js'),
-  'chroniclingamerica': require('./sites/chroniclingamerica.js'),
-  'familysearch': require('./sites/familysearch.js'),
-  'findagrave': require('./sites/findagrave.js'),
-  'findmypast.co.uk': require('./sites/findmypast.co.uk.js'),
-  'findmypast.com': require('./sites/findmypast.com.js'),
-  'fold3': require('./sites/fold3.js'),
-  'geneanet.en': require('./sites/geneanet.en.js'),
-  'genealogieonline': require('./sites/genealogieonline.js'),
-  'genealogybank': require('./sites/genealogybank.js'),
-  'gengophers': require('./sites/gengophers.js'),
-  'geni': require('./sites/geni.js'),
-  'google': require('./sites/google.js'),
-  'nlatrove': require('./sites/nlatrove.js'),
-  'mocavo': require('./sites/mocavo.js'),
-  'myheritage': require('./sites/myheritage.js'),
-  'newspapers': require('./sites/newspapers.js'),
-  'openarchives': require('./sites/openarchives.js'),
-  'usgenweb': require('./sites/usgenweb.js'),
-  'werelate': require('./sites/werelate.js'),
-  'wikitree': require('./sites/wikitree.js'),
-  'worldvitalrecords': require('./sites/worldvitalrecords.js')
-};
+var siteList = [
+  require('./sites/americanancestors.js'),
+  require('./sites/ancestry.js'),
+  require('./sites/archives.js'),
+  require('./sites/billiongraves.js'),
+  require('./sites/chroniclingamerica.js'),
+  require('./sites/familysearch.js'),
+  require('./sites/findagrave.js'),
+  require('./sites/findmypast.co.uk.js'),
+  require('./sites/findmypast.com.js'),
+  require('./sites/fold3.js'),
+  require('./sites/geneanet.en.js'),
+  require('./sites/genealogieonline.js'),
+  require('./sites/genealogybank.js'),
+  require('./sites/gengophers.js'),
+  require('./sites/geni.js'),
+  require('./sites/google.js'),
+  require('./sites/nlatrove.js'),
+  require('./sites/mocavo.js'),
+  require('./sites/myheritage.js'),
+  require('./sites/newspapers.js'),
+  require('./sites/openarchives.js'),
+  require('./sites/usgenweb.js'),
+  require('./sites/werelate.js'),
+  require('./sites/wikitree.js'),
+  require('./sites/worldvitalrecords.js')
+];
+
+// But what we really want is to have the sites in a map
+// keyed by id for easy access
+var siteMap = {};
+utils.each(siteList, function(site){
+  siteMap[site.id] = site;
+})
 
 // Main search link generation function
-var search = module.exports = function(site, person, opts){
-  if(sites[site]){
-    return sites[site](utils.extend({}, config[site], opts), person);
+var gensearch = module.exports = function(site, person, opts){
+  if(siteMap[site]){
+    return siteMap[site].search(utils.extend({}, config[site], opts), person);
   }
 };
 
@@ -43,7 +50,7 @@ var search = module.exports = function(site, person, opts){
  * config('site', {options});
  * config({'site': options});
  */
-search.config = function(site, siteConfig){
+gensearch.config = function(site, siteConfig){
   // config('site', {options});
   if(utils.isString(site) && utils.isObject(siteConfig)){
     config[site] = utils.extend({}, config[site], siteConfig);
@@ -61,4 +68,11 @@ search.config = function(site, siteConfig){
   else {
     return config;
   }
+};
+
+/**
+ * Retrieve a list of available sites.
+ */
+gensearch.sites = function(){
+  return siteList.slice();
 };

@@ -7,7 +7,12 @@ var defaultConfig = {
   otherRange: 2
 };
 
-module.exports = function(config, data){
-  config = utils.defaults(config, defaultConfig);
-  return fmp(config, data, 'com');
+module.exports = {
+  id: 'findmypast.com',
+  name: 'findmypast.com',
+  url: 'http://www.findmypast.com',
+  search: function(config, data){
+    config = utils.defaults(config, defaultConfig);
+    return fmp(config, data, 'com');
+  }
 };
