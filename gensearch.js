@@ -33,7 +33,7 @@ var sites = {
 };
 
 // Main search link generation function
-var search = module.exports = function(site, person, opts){
+var gensearch = module.exports = function(site, person, opts){
   if(sites[site]){
     return sites[site](utils.extend({}, config[site], opts), person);
   }
@@ -44,7 +44,7 @@ var search = module.exports = function(site, person, opts){
  * config('site', {options});
  * config({'site': options});
  */
-search.config = function(site, siteConfig){
+gensearch.config = function(site, siteConfig){
   // config('site', {options});
   if(utils.isString(site) && utils.isObject(siteConfig)){
     config[site] = utils.extend({}, config[site], siteConfig);
@@ -63,6 +63,11 @@ search.config = function(site, siteConfig){
     return config;
   }
 };
+
+/**
+ * Expose sites list.
+ */
+gensearch.sites = sites;
 
 },{"./sites/americanancestors.js":2,"./sites/ancestry.js":3,"./sites/archives.js":4,"./sites/billiongraves.js":5,"./sites/chroniclingamerica.js":6,"./sites/familysearch.js":7,"./sites/findagrave.js":8,"./sites/findmypast.co.uk.js":9,"./sites/findmypast.com.js":10,"./sites/fold3.js":12,"./sites/genealogieonline.js":13,"./sites/genealogybank.js":14,"./sites/geneanet.en.js":15,"./sites/gengophers.js":16,"./sites/geni.js":17,"./sites/google.js":18,"./sites/mocavo.js":19,"./sites/myheritage.js":20,"./sites/newspapers.js":21,"./sites/nlatrove.js":22,"./sites/openarchives.js":23,"./sites/usgenweb.js":24,"./sites/werelate.js":25,"./sites/wikitree.js":26,"./sites/worldvitalrecords.js":27,"./utils.js":28}],2:[function(_dereq_,module,exports){
 var utils = _dereq_('../utils.js');
