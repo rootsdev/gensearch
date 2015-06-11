@@ -334,7 +334,7 @@ var url = gensearch('nlatrove', data);
 http://openarch.nl
 
 ```javascript
-var url = gensearch('openarch', data);
+var url = gensearch('openarchives', data);
 ```
 
 Only `givenName` and `familyName` are used for Open Archive searches.
