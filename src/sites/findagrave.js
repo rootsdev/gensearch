@@ -14,12 +14,11 @@ module.exports = function(config, data){
   
   if( data.birthDate ) {
     query = utils.addQueryParam(query, 'GSbyrel', 'in');
-    query = utils.addQueryParam(query, 'GSby', (new Date(data.birthDate)).getFullYear());
+    query = utils.addQueryParam(query, 'GSby', utils.getYear(data.birthDate));
   }
-  
   if( data.deathDate ) {
     query = utils.addQueryParam(query, 'GSdyrel', 'in');
-    query = utils.addQueryParam(query, 'GSdy', (new Date(data.deathDate)).getFullYear());
+    query = utils.addQueryParam(query, 'GSdy', utils.getYear(data.deathDate));
   }
   
   return url + query;
