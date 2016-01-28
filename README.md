@@ -251,7 +251,7 @@ var url = gensearch('genealogybank', data, [options]);
 
 | option | default | notes |
 |--------|---------|-------|
-| `lifespan` | 90 | If either a `birthDate` or `deathDate` exists, but not both, then this value is used to approximate the missing year. For example, if the `birthDate` is `2 Feb 1856` and no `deathDate` was given then we would subtract `lifespan` from the birth year to get an approximate death year of `1766`.|
+| `lifespan` | 90 | If either a `birthDate` or `deathDate` exists, but not both, then this value is used to approximate the missing year. For example, if the `birthDate` is `2 Feb 1766` and no `deathDate` was given then we would subtract `lifespan` from the birth year to get an approximate death year of `1856`.|
 | `datePadding` | 5 | This value is substracted from the calculated birth year and added to the calculated death year. |
 
 ### geneanet.en
@@ -318,7 +318,7 @@ var url = gensearch('newspapers', data, [options]);
 
 | option | default | notes |
 |--------|---------|-------|
-| `lifespan` | 90 | If either a `birthDate` or `deathDate` exists, but not both, then this value is used to approximate the missing year. For example, if the `birthDate` is `2 Feb 1856` and no `deathDate` was given then we would subtract `lifespan` from the birth year to get an approximate death year of `1766`.|
+| `lifespan` | 90 | If either a `birthDate` or `deathDate` exists, but not both, then this value is used to approximate the missing year. For example, if the `birthDate` is `2 Feb 1766` and no `deathDate` was given then we would subtract `lifespan` from the birth year to get an approximate death year of `1856`.|
 | `datePadding` | 5 | This value is substracted from the calculated birth year and added to the calculated death year. |
 
 ### nla trove
