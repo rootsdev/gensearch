@@ -21,7 +21,6 @@ var sites = {
   'geni': require('./sites/geni.js'),
   'google': require('./sites/google.js'),
   'nlatrove': require('./sites/nlatrove.js'),
-  'mocavo': require('./sites/mocavo.js'),
   'myheritage': require('./sites/myheritage.js'),
   'newspapers': require('./sites/newspapers.js'),
   'openarchives': require('./sites/openarchives.js'),
