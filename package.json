@@ -14,7 +14,8 @@
     "build:dev": "webpack",
     "build:min": "webpack --env.production",
     "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha -- --recursive",
-    "coveralls": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- --recursive && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage"
+    "coveralls": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- --recursive && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage",
+    "prepublish": "npm test && npm run build"
   },
   "files": [
     "src",

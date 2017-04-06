@@ -1,3 +1,4 @@
+[![npm](https://img.shields.io/npm/v/gensesarch.svg?maxAge=2592000)](https://www.npmjs.com/package/gensesarch)
 [![Build Status](https://travis-ci.org/rootsdev/gensearch.svg)](https://travis-ci.org/rootsdev/gensearch)
 [![Coverage Status](https://coveralls.io/repos/rootsdev/gensearch/badge.svg)](https://coveralls.io/r/rootsdev/gensearch)
 
@@ -47,20 +48,20 @@ gensearch.config({
 
 #### Web
 
-Download the `gensearch.js` file and include on your page.
+Via the CDN unpkg:
 
 ```html
-<script src="gensearch.js"></script>
+<script src="//unpkg.com/gensearch@latest/dist/gensearch.min.js"></script>
 ```
 
 #### Node
 
 ```shell
-npm install gen-search
+npm install gensearch
 ```
 
 ```javascript
-var genSearch = require('gen-search');
+var genSearch = require('gensearch');
 ```
 
 ## Schema
