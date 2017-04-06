@@ -1,4 +1,4 @@
-[![npm](https://img.shields.io/npm/v/gensesarch.svg?maxAge=2592000)](https://www.npmjs.com/package/gensesarch)
+[![npm](https://img.shields.io/npm/v/gensearch.svg?maxAge=2592000)](https://www.npmjs.com/package/gensearch)
 [![Build Status](https://travis-ci.org/rootsdev/gensearch.svg)](https://travis-ci.org/rootsdev/gensearch)
 [![Coverage Status](https://coveralls.io/repos/rootsdev/gensearch/badge.svg)](https://coveralls.io/r/rootsdev/gensearch)
 
