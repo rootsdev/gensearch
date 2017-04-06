@@ -1,6 +1,6 @@
 {
   "name": "gensearch",
-  "version": "2.3.1",
+  "version": "2.4.0",
   "description": "Generate search links for genealogy websites",
   "repository": {
     "type": "git",
@@ -10,19 +10,26 @@
   "main": "src/search.js",
   "scripts": {
     "test": "mocha --recursive",
-    "build": "browserify src/search.js -s gensearch -o gensearch.js",
+    "build": "npm run build:dev && npm run build:min",
+    "build:dev": "webpack",
+    "build:min": "webpack --env.production",
     "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha -- --recursive",
     "coveralls": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- --recursive && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage"
   },
+  "files": [
+    "src",
+    "dist"
+  ],
   "keywords": [
     "genealogy"
   ],
   "author": "Justin York",
   "license": "MIT",
   "devDependencies": {
-    "browserify": "3.44.2",
+    "bannerjs": "^1.0.5",
     "coveralls": "2.11.2",
     "istanbul": "0.3.8",
-    "mocha": "2.2.1"
+    "mocha": "2.2.1",
+    "webpack": "^2.3.3"
   }
 }
