@@ -9,7 +9,7 @@ module.exports = function(config, data){
 
   config = utils.defaults(config, defaultConfig);
 
-  var url = 'http://www.genealogieonline.nl/en/zoeken/?publication=0';	// defaults to English version of website    
+  var url = 'https://www.genealogieonline.nl/en/zoeken/?publication=0';	// defaults to English version of website    
   var query = '';
 
   if(data.givenName) {
