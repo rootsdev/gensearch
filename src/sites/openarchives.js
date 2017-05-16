@@ -2,7 +2,7 @@ var utils = require('../utils.js');
 
 module.exports = function(config, data){
 
-  var url = 'http://www.openarch.nl/search.php?lang=en&name='; // defaults to English version of website  
+  var url = 'https://www.openarch.nl/search.php?lang=en&name='; // defaults to English version of website  
   var query = '';
   
   if(data.givenName) {
