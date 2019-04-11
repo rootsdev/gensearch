@@ -10,7 +10,7 @@ module.exports = function(config, data){
 
   config = utils.defaults(config, defaultConfig);
 
-  var fsURL = 'https://familysearch.org/search/record/results#count=20&query=';
+  var fsURL = 'https://familysearch.org/search/record/results?count=20&query=';
   var query = '';
   
   // Simple mappings from the person data object to fs params
