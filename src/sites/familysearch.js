@@ -10,23 +10,23 @@ module.exports = function(config, data){
 
   config = utils.defaults(config, defaultConfig);
 
-  var fsURL = 'https://www.familysearch.org/search/record/results?count=20';
+  var fsURL = 'https://www.familysearch.org/search/record/results?';
   var query = '';
   
   // Simple mappings from the person data object to fs params
   // These don't need any special processing
   var simpleMappings = [
-    ['givenname', 'givenName'],
-    ['surname', 'familyName'],
-    ['birth_place', 'birthPlace'],
-    ['death_place', 'deathPlace'],
-    ['father_givenname', 'fatherGivenName'],
-    ['father_surname', 'fatherFamilyName'],
-    ['mother_givenname', 'motherGivenName'],
-    ['mother_surname', 'motherFamilyName'],
-    ['spouse_givenname', 'spouseGivenName'],
-    ['spouse_surname', 'spouseFamilyName'],
-    ['marriage_place', 'marriagePlace']
+    ['q.givenName', 'givenName'],
+    ['q.surname', 'familyName'],
+    ['q.birthLikePlace', 'birthPlace'],
+    ['q.deathLikePlace', 'deathPlace'],
+    ['q.fatherGivenName', 'fatherGivenName'],
+    ['q.fatherSurname', 'fatherFamilyName'],
+    ['q.motherGivenName', 'motherGivenName'],
+    ['q.motherSurname', 'motherFamilyName'],
+    ['q.spouseGivenName', 'spouseGivenName'],
+    ['q.spouseSurname', 'spouseFamilyName'],
+    ['q.marriageLikePlace', 'marriagePlace']
   ];
   utils.each(simpleMappings, function(map) {
     if( data[map[1]] ) {
@@ -38,8 +38,8 @@ module.exports = function(config, data){
   if(data.birthDate){
     var birthYear = utils.getYearInt(data.birthDate);
     if( birthYear ) {
-      query = utils.addQueryParam(query, 'birth_year_from', birthYear - config.birthRange);
-      query = utils.addQueryParam(query, 'birth_year_to', birthYear + config.birthRange)
+      query = utils.addQueryParam(query, 'q.birthLikeDate.from', birthYear - config.birthRange);
+      query = utils.addQueryParam(query, 'q.birthLikeDate.to', birthYear + config.birthRange)
     }
   }
   
@@ -47,8 +47,8 @@ module.exports = function(config, data){
   if(data.deathDate){
     var deathYear = utils.getYearInt(data.deathDate);
     if( deathYear ) {
-      query = utils.addQueryParam(query, 'death_year_from', deathYear - config.deathRange);
-      query = utils.addQueryParam(query, 'death_year_to', deathYear + config.deathRange);
+      query = utils.addQueryParam(query, 'q.deathLikeDate.from', deathYear - config.deathRange);
+      query = utils.addQueryParam(query, 'q.deathLikeDate.to', deathYear + config.deathRange);
     }
   }
 
@@ -56,15 +56,15 @@ module.exports = function(config, data){
   if(data.marriageDate){
     var marriageYear = utils.getYearInt(data.marriageDate);
     if( marriageYear ) {
-      query = utils.addQueryParam(query, 'marriage_year_from', marriageYear - config.marriageRange);
-      query = utils.addQueryParam(query, 'marriage_year_to', marriageYear + config.marriageRange);
+      query = utils.addQueryParam(query, 'q.marriageLikeDate.from', marriageYear - config.marriageRange);
+      query = utils.addQueryParam(query, 'q.marriageLikeDate.to', marriageYear + config.marriageRange);
     }
   }
   
   if(config.collectionId){
-    query = utils.addQueryParam(query, 'collection_id', config.collectionId);
+    query = utils.addQueryParam(query, 'f.collectionId', config.collectionId);
   }
   
-  return fsURL + query;
+  return fsURL + query.replace('&', '');
 
 };
